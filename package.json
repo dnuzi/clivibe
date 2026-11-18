@@ -1,0 +1,43 @@
+{
+  "name": "devpulse",
+  "version": "1.0.0",
+  "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities with 0 external dependencies.",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "devpulse": "./bin/devpulse.js",
+    "dp": "./bin/devpulse.js"
+  },
+  "scripts": {
+    "start": "node bin/devpulse.js",
+    "test": "node --test tests/cli.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnuzi/devpulse.git"
+  },
+  "keywords": [
+    "zero-dependencies",
+    "cli",
+    "developer-tools",
+    "tui",
+    "terminal",
+    "git",
+    "docker",
+    "error-explainer",
+    "log-viewer",
+    "swiss-army-knife",
+    "devops",
+    "productivity",
+    "npx"
+  ],
+  "author": "dnuzi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dnuzi/devpulse/issues"
+  },
+  "homepage": "https://github.com/dnuzi/devpulse#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
