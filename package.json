@@ -1,6 +1,6 @@
 {
   "name": "clivibe",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Zero-dependency terminal color, gradient, and UI toolkit for Node.js.",
   "type": "module",
   "main": "src/index.js",
@@ -12,7 +12,11 @@
     "./box": "./src/ui/box.js",
     "./chart": "./src/ui/chart.js",
     "./progress": "./src/ui/progress.js",
-    "./widgets": "./src/ui/widgets.js"
+    "./widgets": "./src/ui/widgets.js",
+    "./tasks": "./src/ui/tasks.js",
+    "./diff": "./src/commands/diff.js",
+    "./json": "./src/commands/json.js",
+    "./serve": "./src/commands/serve.js"
   },
   "bin": {
     "clivibe": "./bin/clivibe.js",
@@ -37,6 +41,10 @@
     "ansi",
     "zero-dependencies",
     "developer-tools",
+    "diff",
+    "serve",
+    "json",
+    "sysinfo",
     "git",
     "docker",
     "log-viewer",

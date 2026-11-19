@@ -226,6 +226,54 @@ Generates:
 
 ---
 
+### Static Web Server (`serve`)
+
+Instantly spin up a zero-dependency static file server with real-time request logging:
+
+```sh
+# Serve current directory on port 3000
+clivibe serve
+
+# Serve custom directory and port
+clivibe serve dist 8080
+```
+
+---
+
+### Unified Color File Diff (`diff`)
+
+Compare any two files with colorized additions and deletions:
+
+```sh
+clivibe diff fileA.js fileB.js
+```
+
+---
+
+### JSON Syntax Colorizer & Query (`json`)
+
+Pretty-print, validate, and query JSON files or strings directly in terminal:
+
+```sh
+# Format and syntax-highlight
+clivibe json package.json
+
+# Query nested property
+clivibe json package.json scripts.test
+```
+
+---
+
+### System & Hardware Specs (`sysinfo`)
+
+Inspect your machine's CPU model, core count, memory meters, and local network IPs:
+
+```sh
+clivibe sysinfo
+```
+
+---
+
 ### Project Scaffolding (`scaffold`)
 
 Scaffold clean starter projects configured with modern TypeScript/ESM presets:

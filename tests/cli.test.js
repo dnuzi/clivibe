@@ -8,21 +8,26 @@ import { c, gradient, gradients } from '../src/ui/colors.js';
 import { sparkline, plot } from '../src/ui/chart.js';
 import { renderImage } from '../src/ui/image.js';
 import { ProgressBar } from '../src/ui/progress.js';
+import { computeDiff } from '../src/commands/diff.js';
+import { highlightJson } from '../src/commands/json.js';
 import * as clivibe from '../src/index.js';
 
 test('clivibe --version outputs correct version', () => {
   const output = execSync('node bin/clivibe.js --version', { encoding: 'utf-8' });
-  assert.match(output, /clivibe v1\.2\.0/);
+  assert.match(output, /clivibe v1\.3\.0/);
 });
 
 test('clivibe --help displays all primary commands and UI suite', () => {
   const output = execSync('node bin/clivibe.js --help', { encoding: 'utf-8' });
-  assert.ok(output.includes('wtf'));
-  assert.ok(output.includes('logsee'));
   assert.ok(output.includes('doctor'));
+  assert.ok(output.includes('wtf'));
+  assert.ok(output.includes('serve'));
+  assert.ok(output.includes('diff'));
+  assert.ok(output.includes('json'));
+  assert.ok(output.includes('sysinfo'));
+  assert.ok(output.includes('logsee'));
   assert.ok(output.includes('top'));
   assert.ok(output.includes('scaffold'));
-  assert.ok(output.includes('utils'));
   assert.ok(output.includes('image'));
   assert.ok(output.includes('gradient'));
   assert.ok(output.includes('chart'));
@@ -39,6 +44,32 @@ test('clivibe hash generates valid SHA-256 and UUID', () => {
   const expectedHash = crypto.createHash('sha256').update('hello world').digest('hex');
   assert.ok(output.includes(expectedHash));
   assert.ok(output.includes('Random UUID'));
+});
+
+test('clivibe sysinfo returns CPU, OS and RAM specs', () => {
+  const output = execSync('node bin/clivibe.js sysinfo', { encoding: 'utf-8' });
+  assert.ok(output.includes('Operating System'));
+  assert.ok(output.includes('CPU Model'));
+  assert.ok(output.includes('Memory Total'));
+});
+
+test('Diff engine correctly calculates line changes', () => {
+  const linesA = ['apple', 'banana', 'cherry'];
+  const linesB = ['apple', 'blueberry', 'cherry', 'date'];
+  const diff = computeDiff(linesA, linesB);
+  
+  assert.equal(diff[0].type, 'same');
+  assert.equal(diff[0].text, 'apple');
+  assert.ok(diff.some(d => d.type === 'del' && d.text === 'banana'));
+  assert.ok(diff.some(d => d.type === 'add' && d.text === 'blueberry'));
+  assert.ok(diff.some(d => d.type === 'add' && d.text === 'date'));
+});
+
+test('JSON highlighter highlights valid JSON syntax', () => {
+  const colored = highlightJson({ name: 'clivibe', active: true, count: 42 });
+  assert.ok(colored.includes('name'));
+  assert.ok(colored.includes('true'));
+  assert.ok(colored.includes('42'));
 });
 
 test('UI box renderer produces expected borders and strips ANSI correctly', () => {
@@ -118,4 +149,9 @@ test('Library exports all UI and CLI components', () => {
   assert.ok(typeof clivibe.badge === 'function');
   assert.ok(typeof clivibe.divider === 'function');
   assert.ok(typeof clivibe.keyvalue === 'function');
+  assert.ok(typeof clivibe.runTask === 'function');
+  assert.ok(typeof clivibe.runTasks === 'function');
+  assert.ok(typeof clivibe.computeDiff === 'function');
+  assert.ok(typeof clivibe.highlightJson === 'function');
+  assert.ok(typeof clivibe.startServer === 'function');
 });

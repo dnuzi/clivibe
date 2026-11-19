@@ -12,9 +12,17 @@ import { handleUtils } from './commands/utils.js';
 import { renderImage } from './ui/image.js';
 import { boxen } from './ui/box.js';
 import { sparkline, plot } from './ui/chart.js';
+import { startServer } from './commands/serve.js';
+import { runDiff } from './commands/diff.js';
+import { runJson } from './commands/json.js';
+import { runSysinfo } from './commands/sysinfo.js';
 
 // Export all UI design primitives for library usage
 export * from './ui/index.js';
+export { startServer } from './commands/serve.js';
+export { computeDiff, runDiff } from './commands/diff.js';
+export { highlightJson, runJson } from './commands/json.js';
+export { runSysinfo } from './commands/sysinfo.js';
 
 export async function runCli(argv = process.argv.slice(2)) {
   const cmd = argv[0];
@@ -25,7 +33,7 @@ export async function runCli(argv = process.argv.slice(2)) {
   }
 
   if (cmd === '-v' || cmd === '--version') {
-    console.log('clivibe v1.2.0');
+    console.log('clivibe v1.3.0');
     return;
   }
 
@@ -34,12 +42,16 @@ export async function runCli(argv = process.argv.slice(2)) {
     console.log(`Usage: ${c.bold(c.hex('#5271FF')('clivibe'))} ${c.dim('[command] [options]')}  ${c.dim('(alias: cv)')}\n`);
     console.log(c.bold('Developer Cockpit:'));
     console.log(`  ${c.hex('#8be9fd')('clivibe')}                    Launch interactive TUI menu`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe doctor')}              Scan environment, missing envs & ports`);
     console.log(`  ${c.hex('#8be9fd')('clivibe wtf [error]')}         Explain failed command/error and suggest fix`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe serve [dir] [port]')}  Instant static web server with live logger`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe diff <f1> <f2>')}      Unified side-by-side color file diff`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe json <file> [path]')}  Syntax-highlighted JSON viewer & query`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe sysinfo')}             Hardware, CPU, RAM & network specs`);
     console.log(`  ${c.hex('#8be9fd')('clivibe logsee [file]')}       Stream or view JSON logs with colors & search`);
     console.log(`  ${c.hex('#8be9fd')('clivibe git commit')}          Smart conventional commit generator`);
     console.log(`  ${c.hex('#8be9fd')('clivibe git clean')}           Interactive branch cleaner`);
     console.log(`  ${c.hex('#8be9fd')('clivibe git standup')}         Generate markdown standup from commits`);
-    console.log(`  ${c.hex('#8be9fd')('clivibe doctor')}              Scan environment, missing envs & ports`);
     console.log(`  ${c.hex('#8be9fd')('clivibe scaffold [name]')}     Generate production-ready starters`);
     console.log(`  ${c.hex('#8be9fd')('clivibe top')}                 Terminal cockpit: system, git & docker gauges`);
     console.log(`  ${c.hex('#8be9fd')('clivibe ai <prompt>')}         Query codebase with local Ollama or heuristics`);
@@ -59,6 +71,23 @@ export async function runCli(argv = process.argv.slice(2)) {
   }
 
   switch (cmd) {
+    case 'serve':
+      startServer(argv[1], argv[2]);
+      break;
+
+    case 'diff':
+      runDiff(argv[1], argv[2]);
+      break;
+
+    case 'json':
+      runJson(argv[1], argv[2]);
+      break;
+
+    case 'sysinfo':
+    case 'info':
+      runSysinfo();
+      break;
+
     case 'wtf':
     case 'explain':
       await explainError(argv.slice(1).join(' '));
@@ -68,52 +97,48 @@ export async function runCli(argv = process.argv.slice(2)) {
     case 'logs': {
       let level = null;
       let search = null;
-      const fileArgs = [];
+      let file = null;
+
       for (let i = 1; i < argv.length; i++) {
         if (argv[i] === '--level' && argv[i + 1]) {
           level = argv[++i];
         } else if (argv[i] === '--search' && argv[i + 1]) {
           search = argv[++i];
-        } else {
-          fileArgs.push(argv[i]);
+        } else if (!argv[i].startsWith('-')) {
+          file = argv[i];
         }
       }
-      await viewLogs(fileArgs[0], { level, search });
+      await viewLogs(file, { level, search });
       break;
     }
 
     case 'git':
-      await gitHelper(argv[1], { days: argv.includes('--days') ? argv[argv.indexOf('--days') + 1] : 1 });
+      await gitHelper(argv.slice(1));
       break;
 
     case 'doctor':
-    case 'check':
       await runDoctor();
       break;
 
-    case 'init':
-    case 'create':
     case 'scaffold':
       await scaffoldProject(argv[1]);
       break;
 
     case 'top':
-    case 'dash':
-    case 'dashboard':
-      showDashboard();
+      await showDashboard();
       break;
 
     case 'ai':
-    case 'ask':
       await askAi(argv.slice(1).join(' '));
       break;
 
     case 'kill-port':
-      await handleUtils('port', [argv[1]]);
+    case 'kill':
+      await handleUtils('kill-port', argv.slice(1));
       break;
 
     case 'curl':
-      await handleUtils('curl', [argv[1]]);
+      await handleUtils('curl', argv.slice(1));
       break;
 
     case 'cron':

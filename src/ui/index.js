@@ -11,3 +11,4 @@ export { renderImage, renderAscii, decodeImage } from './image.js';
 export { promptSelect, promptInput, promptConfirm } from './prompt.js';
 export { showBanner, ASCII_LOGO } from './banner.js';
 export { renderTree, renderGauge, badge, divider, keyvalue } from './widgets.js';
+export { runTask, runTasks } from './tasks.js';
