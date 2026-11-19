@@ -26,10 +26,10 @@ jobs:
 
       - name: Verify CLI execution
         run: |
-          node bin/clixy.js --help
-          node bin/clixy.js --version
-          node bin/clixy.js cron "*/15 * * * *"
-          node bin/clixy.js hash "test-string"
+          node bin/clivibe.js --help
+          node bin/clivibe.js --version
+          node bin/clivibe.js cron "*/15 * * * *"
+          node bin/clivibe.js hash "test-string"
 
       - name: Run automated test suite
         run: npm test

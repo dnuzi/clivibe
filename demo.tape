@@ -10,27 +10,27 @@ Set TypingSpeed 50ms
 Set Framerate 25
 Set PlaybackSpeed 1.0
 
-Type "node bin/clixy.js --help"
+Type "node bin/clivibe.js --help"
 Sleep 250ms
 Enter
 Sleep 2.5s
 
-Type "node bin/clixy.js doctor"
+Type "node bin/clivibe.js doctor"
 Sleep 250ms
 Enter
 Sleep 2.5s
 
-Type "node bin/clixy.js wtf EADDRINUSE"
+Type "node bin/clivibe.js wtf EADDRINUSE"
 Sleep 250ms
 Enter
 Sleep 2.5s
 
-Type "node bin/clixy.js cron"
+Type "node bin/clivibe.js cron"
 Sleep 250ms
 Enter
 Sleep 2s
 
-Type "node bin/clixy.js hash clixy"
+Type "node bin/clivibe.js hash clivibe"
 Sleep 250ms
 Enter
 Sleep 2s

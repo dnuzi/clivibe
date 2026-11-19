@@ -1,23 +1,23 @@
 {
-  "name": "clixy",
+  "name": "clivibe",
   "version": "1.0.0",
   "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities.",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "clixy": "./bin/clixy.js",
-    "cx": "./bin/clixy.js"
+    "clivibe": "./bin/clivibe.js",
+    "cv": "./bin/clivibe.js"
   },
   "scripts": {
-    "start": "node bin/clixy.js",
+    "start": "node bin/clivibe.js",
     "test": "node --test tests/cli.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dnuzi/clixy.git"
+    "url": "git+https://github.com/dnuzi/clivibe.git"
   },
   "keywords": [
-    "clixy",
+    "clivibe",
     "zero-dependencies",
     "cli",
     "developer-tools",
@@ -34,9 +34,9 @@
   "author": "DanuZz <danuz.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dnuzi/clixy/issues"
+    "url": "https://github.com/dnuzi/clivibe/issues"
   },
-  "homepage": "https://github.com/dnuzi/clixy#readme",
+  "homepage": "https://github.com/dnuzi/clivibe#readme",
   "engines": {
     "node": ">=18.0.0"
   }

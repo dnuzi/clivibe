@@ -1,25 +1,25 @@
 <div align="center">
 
-<img src="./assets/clixy-banner.svg" alt="clixy banner" width="100%"/>
+<img src="./assets/clivibe-banner.svg" alt="clivibe banner" width="100%"/>
 
 <br/>
 
-<h1>clixy ⚡</h1>
+<h1>clivibe ⚡</h1>
 
 <p><strong>The Zero-Dependency Developer Cockpit & Swiss-Army CLI for Modern Engineers.</strong></p>
 
 <p>
-  <a href="https://www.npmjs.com/package/clixy"><img src="https://img.shields.io/npm/v/clixy?color=%235271FF&style=for-the-badge&logo=npm&logoColor=white" alt="npm version"/></a>
-  <a href="https://www.npmjs.com/package/clixy"><img src="https://img.shields.io/npm/dm/clixy?color=%23FF61D2&style=for-the-badge&logo=npm&logoColor=white" alt="downloads"/></a>
+  <a href="https://www.npmjs.com/package/clivibe"><img src="https://img.shields.io/npm/v/clivibe?color=%235271FF&style=for-the-badge&logo=npm&logoColor=white" alt="npm version"/></a>
+  <a href="https://www.npmjs.com/package/clivibe"><img src="https://img.shields.io/npm/dm/clivibe?color=%23FF61D2&style=for-the-badge&logo=npm&logoColor=white" alt="downloads"/></a>
   <img src="https://img.shields.io/badge/dependencies-0-success?style=for-the-badge&color=%2300F260" alt="zero dependencies"/>
-  <a href="https://github.com/dnuzi/clixy/actions"><img src="https://img.shields.io/github/actions/workflow/status/dnuzi/clixy/ci.yml?branch=main&style=for-the-badge&label=CI&logo=github&logoColor=white" alt="CI Status"/></a>
+  <a href="https://github.com/dnuzi/clivibe/actions"><img src="https://img.shields.io/github/actions/workflow/status/dnuzi/clivibe/ci.yml?branch=main&style=for-the-badge&label=CI&logo=github&logoColor=white" alt="CI Status"/></a>
   <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=for-the-badge&logo=node.js&logoColor=white" alt="node"/>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license"/></a>
 </p>
 
 <br/>
 
-<img src="./assets/demo.gif" alt="clixy terminal demo" width="90%"/>
+<img src="./assets/demo.gif" alt="clivibe terminal demo" width="90%"/>
 
 <br/>
 <br/>
@@ -40,16 +40,16 @@
 
 **Run instantly, zero install needed:**
 ```bash
-npx clixy
+npx clivibe
 ```
 
-**Or install globally (with the ultra-fast `cx` shortcut alias):**
+**Or install globally (with the ultra-fast `cv` shortcut alias):**
 ```bash
-npm install -g clixy
+npm install -g clivibe
 
-cx              # Interactive TUI menu
-cx doctor       # Scan your environment
-cx top          # System dashboard
+cv              # Interactive TUI menu
+cv doctor       # Scan your environment
+cv top          # System dashboard
 ```
 
 > Works seamlessly on **macOS**, **Linux**, and **Windows** with Node.js 18+.
@@ -58,57 +58,57 @@ cx top          # System dashboard
 
 ## 🧰 Features
 
-### 🚨 `clixy wtf` — Error Explainer
+### 🚨 `clivibe wtf` — Error Explainer
 The fastest way to understand and fix broken commands. Pipe any failed output directly:
 
 ```bash
 # JavaScript / Node.js
-npm run build 2>&1 | clixy wtf
+npm run build 2>&1 | clivibe wtf
 
 # Python
-python main.py 2>&1 | clixy wtf
+python main.py 2>&1 | clivibe wtf
 
 # Rust
-cargo build 2>&1 | clixy wtf
+cargo build 2>&1 | clivibe wtf
 
 # Go
-go run . 2>&1 | clixy wtf
+go run . 2>&1 | clivibe wtf
 
 # Or paste the error directly
-clixy wtf "Error: listen EADDRINUSE: address already in use :::3000"
+clivibe wtf "Error: listen EADDRINUSE: address already in use :::3000"
 ```
 
 Recognizes **10+ common error patterns** across all languages and runtimes including port conflicts, missing packages, database auth failures, React hydration errors, Rust borrow checker violations, and Go import issues.
 
 ---
 
-### 📜 `clixy logsee` — JSON Log Viewer
+### 📜 `clivibe logsee` — JSON Log Viewer
 
 Turn messy JSON / ndjson streams into beautiful, color-coded, searchable log views:
 
 ```bash
-clixy logsee server.log
-clixy logsee server.log --level error
-clixy logsee server.log --search "user_id"
+clivibe logsee server.log
+clivibe logsee server.log --level error
+clivibe logsee server.log --search "user_id"
 
 # Pipe directly from a running process:
-node server.js | clixy logsee
-python api.py  | clixy logsee --level warn
+node server.js | clivibe logsee
+python api.py  | clivibe logsee --level warn
 ```
 
 ---
 
-### 🌿 `clixy git` — Git AI Assistant
+### 🌿 `clivibe git` — Git AI Assistant
 
 ```bash
-clixy git commit    # Analyzes staged diff → proposes conventional commit
-clixy git clean     # Arrow-key branch cleaner TUI
-clixy git standup   # Generates Markdown standup from recent commits
+clivibe git commit    # Analyzes staged diff → proposes conventional commit
+clivibe git clean     # Arrow-key branch cleaner TUI
+clivibe git standup   # Generates Markdown standup from recent commits
 ```
 
 ---
 
-### 🩺 `clixy doctor` — Environment Doctor
+### 🩺 `clivibe doctor` — Environment Doctor
 
 Scans your project and runtime environment end-to-end:
 
@@ -121,15 +121,15 @@ Scans your project and runtime environment end-to-end:
 | **Docker** | Daemon health and active containers |
 
 ```bash
-clixy doctor
+clivibe doctor
 ```
 
 ---
 
-### 🖥️ `clixy top` — Terminal Cockpit Dashboard
+### 🖥️ `clivibe top` — Terminal Cockpit Dashboard
 
 ```bash
-clixy top
+clivibe top
 ```
 
 Shows live system telemetry, Git working tree status, and Docker containers in one single terminal screen:
@@ -150,35 +150,35 @@ Shows live system telemetry, Git working tree status, and Docker containers in o
 
 ---
 
-### 🤖 `clixy ai` — Codebase AI Assistant
+### 🤖 `clivibe ai` — Codebase AI Assistant
 
 Query any codebase locally — no cloud, no API key required:
 
 ```bash
-clixy ai "where is auth handled?"
-clixy ai "find all database query functions"
-clixy ai "where is the JWT token validated?"
+clivibe ai "where is auth handled?"
+clivibe ai "find all database query functions"
+clivibe ai "where is the JWT token validated?"
 ```
 
 Crawls `.js`, `.ts`, `.py`, `.go`, `.rs`, `.java`, `.yaml`, `.md` and more. Connects to local **Ollama** models (`llama3`, `deepseek-r1`, `qwen2.5-coder`) when available with instant heuristic fallback.
 
 ---
 
-### 🛠️ `clixy utils` — Daily Developer Utilities
+### 🛠️ `clivibe utils` — Daily Developer Utilities
 
 ```bash
-clixy kill-port 3000               # Kill process locking a port (macOS, Linux, Windows)
-clixy curl https://api.github.com  # Smart HTTP client with latency breakdown
-clixy cron "*/15 * * * *"          # Explain cron schedule in human language
-clixy hash "my-api-key"            # MD5, SHA1, SHA256, Base64 & UUID in one shot
+clivibe kill-port 3000               # Kill process locking a port (macOS, Linux, Windows)
+clivibe curl https://api.github.com  # Smart HTTP client with latency breakdown
+clivibe cron "*/15 * * * *"          # Explain cron schedule in human language
+clivibe hash "my-api-key"            # MD5, SHA1, SHA256, Base64 & UUID in one shot
 ```
 
 ---
 
-### 📦 `clixy scaffold` — Project Scaffolder
+### 📦 `clivibe scaffold` — Project Scaffolder
 
 ```bash
-clixy scaffold my-api
+clivibe scaffold my-api
 ```
 
 Generates a production-ready project starter with Dockerfile, CI workflow, linting, and directory structure for:
@@ -191,17 +191,17 @@ Generates a production-ready project starter with Dockerfile, CI workflow, linti
 
 ## 🎨 Native Color & Gradient Engine
 
-`clixy` includes a built-in TrueColor RGB and ANSI gradient engine inspired by `chalk` and `gradient-string`, written 100% from scratch with **zero external dependencies**:
+`clivibe` includes a built-in TrueColor RGB and ANSI gradient engine inspired by `chalk` and `gradient-string`, written 100% from scratch with **zero external dependencies**:
 
 ```javascript
-import { c, gradients } from 'clixy/ui';
+import { c, gradients } from 'clivibe/ui';
 
 // Chainable styling (Chalk-like syntax)
 console.log(c.bold.cyan('Ready'));
 console.log(c.hex('#FF61D2')('Neon Pink'));
 
 // Multi-stop gradients (Gradient-string algorithm)
-console.log(gradients.synthwave('CLIXY ENGINE'));
+console.log(gradients.synthwave('CLIVIBE ENGINE'));
 console.log(gradients.fire('SYSTEM HOT'));
 ```
 
@@ -209,8 +209,8 @@ console.log(gradients.fire('SYSTEM HOT'));
 
 ## 💡 Why Zero Dependencies?
 
-| Concern | With `npm install` | With `clixy` |
-|---------|--------------------|--------------|
+| Concern | With `npm install` | With `clivibe` |
+|---------|--------------------|----------------|
 | **Cold Start** | 50–500ms loading packages | **< 30ms** instant |
 | **Install Size** | 50MB+ `node_modules` | **0 bytes** |
 | **Supply Chain Risk** | Thousands of transitive deps | **None** |
@@ -233,7 +233,7 @@ Every utility is built purely from native Node.js standard library APIs: `net`, 
 | Developer utility suite | ✅ Done |
 | VHS animated demo GIF | ✅ Done |
 | npm auto-publish via CI | ✅ Done |
-| Config file (`.clixyrc.json`) | 🔜 Planned |
+| Config file (`.cliviberc.json`) | 🔜 Planned |
 | Plugin system for custom commands | 🔜 Planned |
 | Watch mode for log tailing | 🔜 Planned |
 
@@ -245,11 +245,11 @@ Contributions, bug fixes, and new error pattern recognition are very welcome!
 
 ```bash
 # 1. Fork the repository and clone it
-git clone https://github.com/your-username/clixy.git
-cd clixy
+git clone https://github.com/your-username/clivibe.git
+cd clivibe
 
 # 2. Run the CLI locally
-node bin/clixy.js
+node bin/clivibe.js
 
 # 3. Run tests (zero dependencies, native Node.js test runner)
 npm test
@@ -270,7 +270,7 @@ MIT © [DanuZz](https://github.com/dnuzi)
 
 <div align="center">
 
-**If `clixy` saved you time, please ⭐ star the repo — it helps others discover it!**
+**If `clivibe` saved you time, please ⭐ star the repo — it helps others discover it!**
 
 <br/>
 

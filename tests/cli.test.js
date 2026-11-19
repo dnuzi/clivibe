@@ -6,13 +6,13 @@ import { stripAnsi, createBox } from '../src/ui/box.js';
 import { renderTable } from '../src/ui/table.js';
 import { c } from '../src/ui/colors.js';
 
-test('clixy --version outputs correct version', () => {
-  const output = execSync('node bin/clixy.js --version', { encoding: 'utf-8' });
-  assert.match(output, /clixy v1\.0\.0/);
+test('clivibe --version outputs correct version', () => {
+  const output = execSync('node bin/clivibe.js --version', { encoding: 'utf-8' });
+  assert.match(output, /clivibe v1\.0\.0/);
 });
 
-test('clixy --help displays all primary commands', () => {
-  const output = execSync('node bin/clixy.js --help', { encoding: 'utf-8' });
+test('clivibe --help displays all primary commands', () => {
+  const output = execSync('node bin/clivibe.js --help', { encoding: 'utf-8' });
   assert.ok(output.includes('wtf'));
   assert.ok(output.includes('logsee'));
   assert.ok(output.includes('doctor'));
@@ -21,13 +21,13 @@ test('clixy --help displays all primary commands', () => {
   assert.ok(output.includes('utils'));
 });
 
-test('clixy cron parses 5-field expression accurately', () => {
-  const output = execSync('node bin/clixy.js cron "*/15 * * * *"', { encoding: 'utf-8' });
+test('clivibe cron parses 5-field expression accurately', () => {
+  const output = execSync('node bin/clivibe.js cron "*/15 * * * *"', { encoding: 'utf-8' });
   assert.ok(output.includes('Runs every 15 minutes'));
 });
 
-test('clixy hash generates valid SHA-256 and UUID', () => {
-  const output = execSync('node bin/clixy.js hash "hello world"', { encoding: 'utf-8' });
+test('clivibe hash generates valid SHA-256 and UUID', () => {
+  const output = execSync('node bin/clivibe.js hash "hello world"', { encoding: 'utf-8' });
   const expectedHash = crypto.createHash('sha256').update('hello world').digest('hex');
   assert.ok(output.includes(expectedHash));
   assert.ok(output.includes('Random UUID'));

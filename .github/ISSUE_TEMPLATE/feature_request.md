@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea or new utility for clixy
+about: Suggest an idea or new utility for clivibe
 title: '[FEAT] '
 labels: enhancement
 assignees: ''
@@ -10,7 +10,7 @@ assignees: ''
 A clear description of what the problem or daily developer chore is.
 
 **Describe the solution you would like**
-A clear description of what command or utility you want added to clixy.
+A clear description of what command or utility you want added to clivibe.
 
 **Describe alternatives you have considered**
 Any existing tools or workarounds you currently use.

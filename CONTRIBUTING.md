@@ -1,12 +1,12 @@
-# Contributing to clixy
+# Contributing to clivibe
 
-Thank you for your interest in contributing to clixy! We welcome contributions, bug fixes, feature proposals, and ideas from everyone.
+Thank you for your interest in contributing to clivibe! We welcome contributions, bug fixes, feature proposals, and ideas from everyone.
 
 ---
 
 ## Zero-Dependency Philosophy
 
-clixy is committed to **zero external runtime dependencies**. All features must be implemented using native Node.js APIs (`net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`, etc.).
+clivibe is committed to **zero external runtime dependencies**. All features must be implemented using native Node.js APIs (`net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`, etc.).
 
 Before submitting a PR:
 - Do not add packages to `dependencies` in `package.json`.
@@ -19,12 +19,12 @@ Before submitting a PR:
 1. Fork the repository on GitHub.
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/<your-username>/clixy.git
-   cd clixy
+   git clone https://github.com/<your-username>/clivibe.git
+   cd clivibe
    ```
 3. Run the CLI locally:
    ```bash
-   node bin/clixy.js
+   node bin/clivibe.js
    ```
 4. Run the automated test suite:
    ```bash

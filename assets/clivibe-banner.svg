@@ -32,21 +32,21 @@
   <!-- Gradient bottom line -->
   <rect x="20" y="170" width="860" height="2" fill="url(#line-grad)" rx="1" opacity="0.6"/>
 
-  <!-- CLIXY logo text -->
-  <text x="40" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="76" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clixy</text>
+  <!-- CLIVIBE logo text -->
+  <text x="40" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="72" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clivibe</text>
 
   <!-- Tagline -->
   <text x="42" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">The Zero-Dependency Developer Cockpit &amp; Swiss-Army CLI</text>
 
   <!-- Right side: Commands preview -->
   <text x="480" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npx clixy</text>
+  <text x="498" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npx clivibe</text>
   <text x="480" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clixy doctor</text>
+  <text x="498" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe doctor</text>
   <text x="480" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npm run build 2>&amp;1 | clixy wtf</text>
+  <text x="498" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npm run build 2>&amp;1 | clivibe wtf</text>
   <text x="480" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clixy git standup</text>
+  <text x="498" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe git standup</text>
   <text x="480" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clixy kill-port 3000</text>
+  <text x="498" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe kill-port 3000</text>
 </svg>
