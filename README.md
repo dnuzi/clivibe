@@ -11,6 +11,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-5271FF.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-5271FF.svg?style=flat-square)](https://nodejs.org)
 [![GitHub Discussions](https://img.shields.io/github/discussions/dnuzi/clivibe?style=flat-square&color=5271FF)](https://github.com/dnuzi/clivibe/discussions)
+[![GitHub stars](https://img.shields.io/github/stars/dnuzi/clivibe?style=flat-square&color=5271FF)](https://github.com/dnuzi/clivibe/network/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/dnuzi/clivibe?style=flat-square&color=5271FF)](https://github.com/dnuzi/clivibe/network/members)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-5271FF?style=flat-square)](https://github.com/sponsors/dnuzi)
 
 <br/><br/>
@@ -511,6 +513,15 @@ const confirmed = await promptConfirm('Deploy to production?');
 ## Zero Dependencies
 
 `clivibe` contains **0 external dependencies**. Every color parser, gradient interpolator, image decoder, box renderer, chart plotter, and process inspector is implemented using native Node.js core modules (`zlib`, `net`, `fs`, `crypto`, `child_process`, `readline`).
+
+---
+
+## Show Your Support
+
+If you find `clivibe` helpful for your CLI workflows and terminal designs:
+- **Star this repository** to support development and help others discover it.
+- **Fork the repository** to contribute custom themes, commands, or UI primitives.
+- **Join discussions** on [GitHub Discussions](https://github.com/dnuzi/clivibe/discussions).
 
 ---
 
