@@ -63,8 +63,28 @@ export async function runDoctor() {
     results.push([c.dim('• Skip'), 'Docker Engine', 'Not installed (optional)']);
   }
 
-  // 4. Dependencies check in current directory
+  // 4. Multi-Language Runtime Checks (Python, Rust, Go)
+  const pythonVer = safeExec('python --version') || safeExec('python3 --version');
+  if (pythonVer) {
+    results.push([c.green('✔ Pass'), 'Python Runtime', pythonVer]);
+  }
+
+  const goVer = safeExec('go version');
+  if (goVer) {
+    results.push([c.green('✔ Pass'), 'Go Runtime', goVer]);
+  }
+
+  const rustVer = safeExec('cargo --version');
+  if (rustVer) {
+    results.push([c.green('✔ Pass'), 'Rust / Cargo', rustVer]);
+  }
+
+  // 5. Project Manifest & Dependencies Detection (Multi-Language)
+  let projectDetected = false;
+
+  // Node.js
   if (fs.existsSync('package.json')) {
+    projectDetected = true;
     try {
       const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
       const hasDeps = (pkg.dependencies && Object.keys(pkg.dependencies).length > 0) ||
@@ -72,15 +92,42 @@ export async function runDoctor() {
       const hasModules = fs.existsSync('node_modules');
 
       if (!hasDeps) {
-        results.push([c.green('✔ Pass'), 'Project Dependencies', 'Zero dependencies required!']);
+        results.push([c.green('✔ Pass'), 'Node Project', 'Zero dependencies required!']);
       } else if (hasModules) {
-        results.push([c.green('✔ Pass'), 'Project Dependencies', 'node_modules is present']);
+        results.push([c.green('✔ Pass'), 'Node Project', 'node_modules is present']);
       } else {
-        results.push([c.yellow('⚠ Warn'), 'Project Dependencies', 'Dependencies listed in package.json but node_modules missing. Run npm install']);
+        results.push([c.yellow('⚠ Warn'), 'Node Project', 'Dependencies listed in package.json but node_modules missing. Run npm install']);
       }
     } catch {
-      results.push([c.dim('• Skip'), 'Project Dependencies', 'Unable to parse package.json']);
+      results.push([c.dim('• Skip'), 'Node Project', 'Unable to parse package.json']);
     }
+  }
+
+  // Python
+  if (fs.existsSync('requirements.txt') || fs.existsSync('pyproject.toml') || fs.existsSync('Pipfile')) {
+    projectDetected = true;
+    const hasVenv = fs.existsSync('.venv') || fs.existsSync('venv') || process.env.VIRTUAL_ENV;
+    results.push([
+      hasVenv ? c.green('✔ Pass') : c.yellow('⚠ Warn'),
+      'Python Project',
+      hasVenv ? 'Virtual environment active' : 'No .venv detected. Consider running: python -m venv .venv'
+    ]);
+  }
+
+  // Rust
+  if (fs.existsSync('Cargo.toml')) {
+    projectDetected = true;
+    results.push([c.green('✔ Pass'), 'Rust Project', 'Cargo.toml found']);
+  }
+
+  // Go
+  if (fs.existsSync('go.mod')) {
+    projectDetected = true;
+    results.push([c.green('✔ Pass'), 'Go Project', 'go.mod module detected']);
+  }
+
+  if (!projectDetected) {
+    results.push([c.dim('• Info'), 'Project Manifest', 'Generic workspace (no manifest file detected)']);
   }
 
   // 5. Environment Variables check (.env.example vs .env)

@@ -55,6 +55,26 @@ const ERROR_PATTERNS = [
     ]
   },
   {
+    regex: /borrow of moved value:? `([^`]+)`/i,
+    type: 'RUST OWNERSHIP ERROR',
+    cause: (m) => `Value '${m[1]}' was moved and can no longer be accessed here in Rust.`,
+    fixes: (m) => [
+      `Clone the value before moving: ${c.hex('#8be9fd')(`${m[1]}.clone()`)}`,
+      `Borrow with a reference (&${m[1]}) instead of taking full ownership.`,
+      `Check if the type can implement the ${c.bold('Copy')} trait.`
+    ]
+  },
+  {
+    regex: /imported and not used: "([^"]+)"/i,
+    type: 'GO UNUSED IMPORT',
+    cause: (m) => `Go compiler requires all imported packages to be referenced. Package '${m[1]}' is unused.`,
+    fixes: (m) => [
+      `Remove '${m[1]}' from your import declaration.`,
+      `Or use a blank identifier if imported for side-effects: ${c.hex('#8be9fd')(`_ "${m[1]}"`)}`,
+      `Run ${c.hex('#8be9fd')('goimports -w .')} to clean imports automatically.`
+    ]
+  },
+  {
     regex: /ECONNREFUSED.*?([0-9.]+):(\d+)/i,
     type: 'CONNECTION REFUSED',
     cause: (m) => `Cannot connect to target service at ${m[1]}:${m[2]}. The service is not running or the port is wrong.`,
