@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/dnuzi/clivibe/main/assets/clivibe-banner.svg" width="700" alt="clivibe" />
+<img src="https://raw.githubusercontent.com/dnuzi/clivibe/main/assets/clivibe-banner.svg" width="760" alt="clivibe" />
 
 <br/>
 
-**Zero-dependency terminal color, gradient, and UI toolkit for Node.js.**
+**The Zero-Dependency Developer Cockpit & Terminal UI System for Node.js.**
 
 [![npm version](https://img.shields.io/npm/v/clivibe.svg?style=flat-square&color=5271FF)](https://www.npmjs.com/package/clivibe)
 [![npm downloads](https://img.shields.io/npm/dm/clivibe.svg?style=flat-square&color=5271FF)](https://www.npmjs.com/package/clivibe)
@@ -21,224 +21,461 @@
 
 ---
 
-## Install
+## Quick Start
 
 ```sh
-npm install clivibe
-```
-
-```sh
+# Run instantly without installing
 npx clivibe
+
+# Or install globally for everyday developer workflow
+npm install -g clivibe
+
+# Or add as a zero-dependency UI toolkit in your project
+npm install clivibe
 ```
 
 ---
 
-## Terminal Colors
+## Table of Contents
+
+- [Developer Cockpit CLI](#developer-cockpit-cli)
+  - [Interactive Menu Dashboard](#interactive-menu-dashboard)
+  - [Environment & Project Diagnostics (`doctor`)](#environment--project-diagnostics-doctor)
+  - [Instant Error Explainer (`wtf`)](#instant-error-explainer-wtf)
+  - [Real-Time Terminal Monitor (`top`)](#real-time-terminal-monitor-top)
+  - [Git Workflow Automations (`git`)](#git-workflow-automations-git)
+  - [Structured Log Streamer (`logsee`)](#structured-log-streamer-logsee)
+  - [Port Killer (`kill-port`)](#port-killer-kill-port)
+  - [Smart HTTP Client (`curl`)](#smart-http-client-curl)
+  - [Cron Schedule Explainer (`cron`)](#cron-schedule-explainer-cron)
+  - [Hash & UUID Generator (`hash`)](#hash--uuid-generator-hash)
+  - [Project Scaffolding (`scaffold`)](#project-scaffolding-scaffold)
+  - [Local AI & Heuristic Helper (`ai`)](#local-ai--heuristic-helper-ai)
+- [Terminal UI & Styling Engine](#terminal-ui--styling-engine)
+  - [Terminal Colors & Styles](#terminal-colors--styles)
+  - [Gradients & Palettes](#gradients--palettes)
+  - [Borders & Boxes](#borders--boxes)
+  - [Progress Bars](#progress-bars)
+  - [Data Visualization (Sparklines & Charts)](#data-visualization-sparklines--charts)
+  - [Widgets (Tree, Gauge, Badge, Divider, Table)](#widgets-tree-gauge-badge-divider-table)
+  - [TrueColor Terminal Image Viewer](#truecolor-terminal-image-viewer)
+  - [Spinners & Prompts](#spinners--prompts)
+- [Zero Dependencies](#zero-dependencies)
+- [License](#license)
+
+---
+
+# Developer Cockpit CLI
+
+### Interactive Menu Dashboard
+
+Launch the full interactive terminal cockpit with a single command:
+
+```sh
+clivibe
+# or
+cv
+```
+
+Presents an interactive keyboard-navigable menu (`↑`/`↓` and `Enter`) to access all system tools, git helpers, monitors, and UI diagnostics.
+
+---
+
+### Environment & Project Diagnostics (`doctor`)
+
+Inspect your runtime environment, missing configuration files, environment variables, active ports, and project manifests across Node.js, Python, Rust, Go, and Docker.
+
+```sh
+clivibe doctor
+```
+
+**Checks performed:**
+- Node.js runtime version compatibility (`>= 18.0.0`)
+- Git CLI version and current committer configuration
+- Docker daemon status (running / stopped)
+- Multi-runtime detection (Python virtualenvs, Go modules, Cargo manifests)
+- Environment variable verification: diffs `.env.example` vs `.env` to flag missing keys
+- Standard dev ports availability (`3000`, `5173`, `8080`, `5432`)
+
+---
+
+### Instant Error Explainer (`wtf`)
+
+Diagnose complex terminal exceptions, stack traces, and build failures. Translates raw stack traces into clear root-cause explanations and actionable, copy-paste fixes.
+
+```sh
+# Direct error argument
+clivibe wtf "Error: listen EADDRINUSE :::3000"
+
+# Pipe directly from failed builds or processes
+npm run build 2>&1 | clivibe wtf
+docker compose up 2>&1 | clivibe wtf
+```
+
+**Built-in heuristic patterns:**
+- `EADDRINUSE` (port conflict with command to inspect and terminate PID)
+- `Cannot find module` (missing dependency identification)
+- `ModuleNotFoundError` (Python virtualenv & requirements resolution)
+- `borrow of moved value` (Rust ownership error analysis)
+- `imported and not used` (Go compiler unused import cleanup)
+- `ECONNREFUSED` (database, Redis, or backend service connection failure)
+- `password authentication failed` (PostgreSQL / database credential mismatch)
+- `Hydration failed` (React SSR / client mismatch troubleshooting)
+- `EACCES: permission denied` (file permission and ownership remediation)
+
+---
+
+### Real-Time Terminal Monitor (`top`)
+
+An ultra-lightweight terminal cockpit displaying live system vitals, Git working tree status, and Docker container state.
+
+```sh
+clivibe top
+```
+
+Displays CPU utilization gauges, memory meters, active Git branch with uncommitted changes count, and running container statistics in a clean, self-updating dashboard.
+
+---
+
+### Git Workflow Automations (`git`)
+
+Simplify day-to-day Git operations with streamlined subcommands:
+
+```sh
+# Generate a clean Markdown standup summary from recent commits
+clivibe git standup
+
+# Interactive Conventional Commit generator (feat, fix, docs, refactor...)
+clivibe git commit
+
+# Interactive branch cleaner (safely delete merged / stale local branches)
+clivibe git clean
+```
+
+---
+
+### Structured Log Streamer (`logsee`)
+
+Colorize, parse, and search structured JSON or plain text logs in real time.
+
+```sh
+# Stream and follow live application logs
+clivibe logsee app.log
+
+# View structured logs with search filtering
+clivibe logsee /var/log/server.log --filter error
+```
+
+Automatically formats timestamps, highlights status codes, and colors log levels (`ERROR`, `WARN`, `INFO`, `DEBUG`).
+
+---
+
+### Port Killer (`kill-port`)
+
+Quickly identify and free ports occupied by orphaned processes:
+
+```sh
+clivibe kill-port 3000
+clivibe kill-port 8080
+```
+
+Cross-platform: works seamlessly on macOS, Linux, and Windows without external dependencies.
+
+---
+
+### Smart HTTP Client (`curl`)
+
+Test API endpoints directly from your terminal with visual status badges, latency breakdowns, and formatted JSON output:
+
+```sh
+clivibe curl https://api.github.com
+clivibe curl localhost:3000/api/health
+```
+
+Outputs HTTP status badges (`200 OK`, `404 Not Found`), roundtrip response latency in milliseconds, headers, and indented JSON body preview.
+
+---
+
+### Cron Schedule Explainer (`cron`)
+
+Convert 5-field cron syntax into human-readable English:
+
+```sh
+clivibe cron "*/15 * * * *"
+# Outputs: Runs every 15 minutes
+
+clivibe cron "0 9 * * 1-5"
+# Outputs: Runs at 09:00, Monday through Friday
+```
+
+---
+
+### Hash & UUID Generator (`hash`)
+
+Generate cryptographically secure hashes and unique identifiers in one pass:
+
+```sh
+clivibe hash "my-secret-key"
+```
+
+Generates:
+- **SHA-256** checksum
+- **MD5** digest
+- **Base64** encoded string
+- **UUID v4** cryptographically random identifier
+
+---
+
+### Project Scaffolding (`scaffold`)
+
+Scaffold clean starter projects configured with modern TypeScript/ESM presets:
+
+```sh
+clivibe scaffold my-project
+```
+
+Presents an interactive selector for Node.js REST API, CLI tool, or web application starter kits.
+
+---
+
+### Local AI & Heuristic Helper (`ai`)
+
+Query your codebase or obtain development suggestions using local Ollama integration or built-in offline heuristics:
+
+```sh
+clivibe ai "How do I set up a rate limiter in Express?"
+```
+
+---
+
+# Terminal UI & Styling Engine
+
+clivibe is also a comprehensive, zero-dependency terminal UI library that you can import into your Node.js scripts.
+
+### Terminal Colors & Styles
 
 ```js
 import { c } from 'clivibe/colors';
 
-console.log(c.red('error'));
-console.log(c.bgBlue.white.bold(' INFO '));
-console.log(c.hex('#FF61D2')('custom hex'));
-console.log(c.rgb(80, 200, 120)('rgb color'));
-```
+// Standard colors
+console.log(c.red('Error message'));
+console.log(c.green('Operation successful'));
+console.log(c.yellow('Configuration warning'));
+console.log(c.cyan('System notice'));
 
-Supports chaining of styles — bold, dim, italic, underline, inverse, strikethrough, and all standard + bright foreground/background colors.
+// Modifiers & chaining
+console.log(c.bold.underline.white('Important Title'));
+console.log(c.dim('Secondary metadata'));
+console.log(c.inverse(' Inverted label '));
+
+// 24-bit TrueColor hex & rgb
+console.log(c.hex('#5271FF')('Hex colored text'));
+console.log(c.rgb(255, 97, 210)('RGB colored text'));
+
+// Background colors
+console.log(c.bgRed.brightWhite.bold(' CRITICAL '));
+console.log(c.bgHex('#5271FF').white(' BADGE '));
+```
 
 ---
 
-## Gradients
+### Gradients & Palettes
+
+Create multi-stop linear and HSV-interpolated gradients:
 
 ```js
 import { gradients, gradient } from 'clivibe/colors';
 
-// Built-in presets
-console.log(gradients.rainbow('Hello, World!'));
-console.log(gradients.synthwave('SYNTHWAVE'));
-console.log(gradients.fire('  HOT  '));
+// 16 Built-in palettes
+console.log(gradients.synthwave('SYNTHWAVE VIBES'));
+console.log(gradients.rainbow('Spectrum of colors'));
+console.log(gradients.fire('High performance engine'));
+console.log(gradients.cyber('Cyberpunk terminal'));
+console.log(gradients.pastel('Soft pastel tones'));
+console.log(gradients.cristal('Crystal clear output'));
 
-// Custom gradient
-const ocean = gradient(['#00c6ff', '#0072ff']);
-console.log(ocean('Gradient text'));
+// Custom multi-stop gradient
+const customGrad = gradient(['#FF61D2', '#5271FF', '#12D8FA']);
+console.log(customGrad('Custom linear gradient text'));
 
-// HSV-spin (smooth color wheel rotation)
-const spin = gradient(['#ff0000', '#0000ff'], { interpolation: 'hsv', hsvSpin: 'long' });
-console.log(spin('Spectrum'));
+// HSV color wheel interpolation
+const smoothGrad = gradient(['#ff0000', '#0000ff'], {
+  interpolation: 'hsv',
+  hsvSpin: 'long'
+});
+console.log(smoothGrad('HSV interpolated gradient'));
 ```
 
-**Available presets:** `rainbow` `pastel` `cristal` `mind` `passion` `retro` `fire` `cyber` `synthwave` `aurora` `sunset` `vice` `fruit` `summer` `atlas` `sublime`
+**Built-in palettes:** `rainbow` · `pastel` · `cristal` · `mind` · `passion` · `retro` · `fire` · `cyber` · `synthwave` · `aurora` · `sunset` · `vice` · `fruit` · `summer` · `atlas` · `sublime`
 
 ---
 
-## Boxes
+### Borders & Boxes
+
+Render styled terminal boxes with title alignment, border colors, and customizable padding:
 
 ```js
-import { createBox } from 'clivibe/box';
+import { createBox, boxen } from 'clivibe/box';
 
-console.log(createBox('Deployment complete.', 'STATUS', '#5271FF'));
-// Border styles: round · single · double · bold · classic
-console.log(createBox('Warning text', 'WARN', '#FFB199', { style: 'double' }));
+// Fast styled box
+console.log(createBox('Server running on port 3000', 'DEPLOYED', '#5271FF'));
+
+// Advanced box configuration
+console.log(boxen('Multi-line content\nAll systems operational', {
+  title: 'STATUS REPORT',
+  titleAlignment: 'center',
+  borderStyle: 'double', // 'round' | 'single' | 'double' | 'bold' | 'classic'
+  borderColor: '#12D8FA',
+  padding: 1,
+  margin: 1
+}));
 ```
 
 ---
 
-## Progress Bars
+### Progress Bars
+
+Smooth, gradient-capable terminal progress bars:
 
 ```js
 import { ProgressBar } from 'clivibe/progress';
 
-const bar = new ProgressBar({ total: 100, width: 40, gradient: ['#5271FF', '#FF61D2'] });
-bar.update(75);
+const bar = new ProgressBar(100, {
+  width: 40,
+  gradient: ['#5271FF', '#FF61D2'],
+  format: 'Uploading :bar :percent (:current/:total)'
+});
+
+bar.update(45);
+// Uploading ██████████████████░░░░░░░░░░░░░░ 45% (45/100)
+
 bar.complete();
 ```
 
 ---
 
-## Charts
+### Data Visualization (Sparklines & Charts)
+
+Render inline sparklines or full 2D ASCII graphs directly in terminal output:
 
 ```js
 import { sparkline, plot } from 'clivibe/chart';
 
-console.log(sparkline([10, 25, 18, 34, 55, 42, 60, 35]));
-// ▁▃▂▄▆▅▇▄
+// Inline sparkline
+const trend = sparkline([5, 12, 18, 9, 24, 35, 42, 28, 50, 65, 72, 58, 80, 95]);
+console.log(`Throughput: ${trend}`);
+// Throughput:  ▂▂ ▃▄▄▃▅▆▆▅▇█
 
-console.log(plot([10, 25, 18, 34, 55, 42, 60, 35], { label: 'Requests/s' }));
+// 2D line plot with auto-scaled axes
+console.log(plot([10, 25, 18, 34, 55, 42, 60, 35], {
+  height: 8,
+  label: 'Requests / sec'
+}));
 ```
 
 ---
 
-## Widgets
+### Widgets (Tree, Gauge, Badge, Divider, Table)
 
 ```js
 import { renderTree, renderGauge, badge, divider, keyvalue } from 'clivibe/widgets';
+import { renderTable } from 'clivibe';
 
-// Directory tree
-renderTree({ name: 'src', children: [{ name: 'index.js' }, { name: 'utils.js' }] });
+// 1. Directory & Object Tree
+renderTree({
+  name: 'src',
+  children: [
+    { name: 'index.js' },
+    {
+      name: 'ui',
+      children: [{ name: 'colors.js' }, { name: 'widgets.js' }]
+    }
+  ]
+});
 
-// Gauge meter
-console.log(renderGauge(72, { label: 'CPU' }));
+// 2. Graphical Percentage Gauge
+console.log(renderGauge(78, { label: 'Memory Usage', width: 25 }));
+// Memory Usage [███████████████████░░░░░░] 78%
 
-// Inline badge
-console.log(badge('v1.2.0', '#5271FF'));
+// 3. Status Badges
+console.log(badge('v1.2.0', '#5271FF') + ' ' + badge('PASS', '#00ff00'));
 
-// Key-value table
-keyvalue({ Version: '1.2.0', License: 'MIT', Platform: 'Node.js >= 18' });
+// 4. Section Divider
+console.log(divider('BUILD METRICS'));
 
-// Section divider
-console.log(divider('SECTION'));
+// 5. Aligned Key-Value Lists
+keyvalue({
+  Environment: 'Production',
+  Node: process.version,
+  Status: 'Active'
+});
+
+// 6. Formatted ASCII Tables
+console.log(renderTable(
+  ['Command', 'Runtime', 'Status'],
+  [
+    ['doctor', '45ms', 'Passed'],
+    ['wtf', '12ms', 'Passed'],
+    ['chart', '8ms', 'Passed']
+  ]
+));
 ```
 
 ---
 
-## Spinner
+### TrueColor Terminal Image Viewer
+
+Decode and display PNG, BMP, and PPM images right in the terminal using 24-bit ANSI half-block characters:
 
 ```js
-import { createSpinner } from 'clivibe';
+import { renderImage } from 'clivibe/image';
 
-const spinner = createSpinner('Loading...').start();
-await doWork();
-spinner.stop('Done');
+// Automatically scales to fit terminal dimensions
+await renderImage('./logo.png', { width: 60 });
 ```
 
 ---
 
-## Image Rendering
+### Spinners & Prompts
+
+Zero-dependency interactive terminal prompts and animated spinners:
 
 ```js
-import { renderImage } from 'clivibe';
+import { createSpinner, promptSelect, promptInput, promptConfirm } from 'clivibe';
 
-// Render a PNG or BMP file using half-block characters with TrueColor
-await renderImage('./screenshot.png', { width: 80 });
+// Loading spinner
+const spinner = createSpinner('Analyzing codebase...').start();
+await doAsyncWork();
+spinner.stop('Analysis complete');
+
+// Interactive selection
+const selected = await promptSelect('Choose a template:', ['Express', 'Fastify', 'CLI Tool']);
+
+// User text input
+const name = await promptInput('Project name:', 'my-app');
+
+// Confirmation dialog
+const confirmed = await promptConfirm('Deploy to production?');
 ```
-
----
-
-## Glyphs & Badges
-
-```js
-import { glyphs, badges } from 'clivibe/colors';
-
-console.log(glyphs.success + ' Build passed');   // ✔ Build passed
-console.log(glyphs.error   + ' Build failed');   // ✖ Build failed
-console.log(glyphs.warning + ' Check config');   // ▲ Check config
-
-console.log(badges.primary('PASS'));
-console.log(badges.error('FAIL'));
-console.log(badges.info('INFO'));
-```
-
----
-
-## CLI Commands
-
-```
-clivibe [command] [options]
-cv      [command] [options]        (short alias)
-```
-
-| Command | Description |
-|---|---|
-| `clivibe menu` | Interactive command launcher |
-| `clivibe doctor` | System and project environment diagnostics |
-| `clivibe git` | Git workflow shortcuts |
-| `clivibe scaffold` | Project scaffolding |
-| `clivibe top` | Real-time process monitor |
-| `clivibe logsee <file>` | Structured log viewer |
-| `clivibe wtf "<error>"` | Error pattern analyzer |
-| `clivibe utils curl <url>` | HTTP inspector |
-| `clivibe utils cron "<expr>"` | Cron expression decoder |
-| `clivibe hash <value>` | Hash generator |
-| `clivibe gradient "<text>"` | Render gradient text |
-| `clivibe spark <values>` | Render sparkline chart |
-| `clivibe chart <values>` | Render 2D line chart |
-| `clivibe image <file>` | Render image in terminal |
-| `clivibe box "<text>"` | Render bordered box |
-
----
-
-## API Reference
-
-### `c` — Styler
-
-```
-c.red · c.green · c.blue · c.yellow · c.cyan · c.magenta · c.white · c.gray
-c.bgRed · c.bgGreen · c.bgBlue · c.bgYellow · c.bgCyan · c.bgMagenta · c.bgWhite
-c.bold · c.dim · c.italic · c.underline · c.inverse · c.strikethrough
-c.hex('#RRGGBB') · c.rgb(r, g, b)
-c.bgHex('#RRGGBB')
-```
-
-All modifiers are chainable: `c.bgBlue.white.bold('text')`.
-
-### `gradient(colors, options?)` — Gradient Factory
-
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `interpolation` | `'rgb'` \| `'hsv'` | `'rgb'` | Interpolation mode |
-| `hsvSpin` | `'short'` \| `'long'` | `'short'` | HSV rotation direction |
-
-### `gradients` — Preset Map
-
-All presets are callable: `gradients.rainbow(str)`, `gradients.fire(str)`, etc.
 
 ---
 
 ## Zero Dependencies
 
-clivibe uses only Node.js built-ins — `zlib`, `net`, `fs`, `child_process`, `readline`. Nothing is downloaded from the npm registry at runtime.
+`clivibe` contains **0 external dependencies**. Every color parser, gradient interpolator, image decoder, box renderer, chart plotter, and process inspector is implemented using native Node.js core modules (`zlib`, `net`, `fs`, `crypto`, `child_process`, `readline`).
 
 ---
 
 ## Contributing
 
 Contributions, issues, and feature requests are welcome.
-[Open a discussion](https://github.com/dnuzi/clivibe/discussions) · [File an issue](https://github.com/dnuzi/clivibe/issues)
+
+- [GitHub Discussions](https://github.com/dnuzi/clivibe/discussions)
+- [Report an Issue](https://github.com/dnuzi/clivibe/issues)
+- [Sponsor Development](https://github.com/sponsors/dnuzi)
 
 ---
 
 ## License
 
 [MIT](LICENSE) © [DanuZz](https://github.com/dnuzi)
-
-

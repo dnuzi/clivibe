@@ -1,21 +1,21 @@
-<svg fill="none" viewBox="0 0 900 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 960 210" width="100%" height="210" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0d1117"/>
-      <stop offset="100%" style="stop-color:#161b22"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b0f17"/>
+      <stop offset="100%" style="stop-color:#141923"/>
     </linearGradient>
     <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#FF61D2"/>
-      <stop offset="40%" style="stop-color:#5271FF"/>
+      <stop offset="45%" style="stop-color:#5271FF"/>
       <stop offset="100%" style="stop-color:#12D8FA"/>
     </linearGradient>
     <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#FF61D2;stop-opacity:1"/>
-      <stop offset="50%" style="stop-color:#5271FF;stop-opacity:1"/>
+      <stop offset="0%" style="stop-color:#FF61D2;stop-opacity:0.8"/>
+      <stop offset="50%" style="stop-color:#5271FF;stop-opacity:0.8"/>
       <stop offset="100%" style="stop-color:#12D8FA;stop-opacity:0"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -24,43 +24,60 @@
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="180" fill="url(#bg)" rx="12"/>
+  <rect width="960" height="210" fill="url(#bg)" rx="14"/>
+  <rect width="960" height="210" fill="none" stroke="#21262d" stroke-width="1.5" rx="14"/>
 
   <!-- Accent line left -->
-  <rect x="0" y="0" width="4" height="180" fill="url(#text-grad)" rx="2"/>
+  <rect x="0" y="0" width="4" height="210" fill="url(#text-grad)" rx="2"/>
 
   <!-- Gradient bottom line -->
-  <rect x="20" y="170" width="860" height="2" fill="url(#line-grad)" rx="1" opacity="0.6"/>
+  <rect x="25" y="198" width="910" height="2" fill="url(#line-grad)" rx="1"/>
 
+  <!-- Left Column: Branding -->
   <!-- CLIVIBE logo text -->
-  <text x="40" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="68" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clivibe</text>
+  <text x="45" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="62" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clivibe</text>
 
-  <!-- Tagline -->
-  <text x="42" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#8b949e">Zero-Dependency Terminal Color, Gradient &amp; UI Toolkit for Node.js</text>
+  <!-- Tagline split into two well-spaced lines so no collision -->
+  <text x="47" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600" fill="#e6edf3">Zero-Dependency Developer Cockpit &amp;</text>
+  <text x="47" y="134" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#8b949e">Terminal UI &amp; Styling Toolkit for Node.js</text>
 
-  <!-- Badges below logo -->
-  <rect x="42" y="145" width="82" height="18" rx="4" fill="#5271FF" opacity="0.18"/>
-  <text x="50" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#5271FF">ZERO-DEP</text>
+  <!-- Feature Badges -->
+  <rect x="47" y="152" width="76" height="20" rx="4" fill="#5271FF" fill-opacity="0.15" stroke="#5271FF" stroke-opacity="0.4"/>
+  <text x="56" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" fill="#798eff">ZERO-DEP</text>
 
-  <rect x="132" y="145" width="88" height="18" rx="4" fill="#FF61D2" opacity="0.18"/>
-  <text x="140" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#FF61D2">GRADIENTS</text>
+  <rect x="131" y="152" width="128" height="20" rx="4" fill="#FF61D2" fill-opacity="0.15" stroke="#FF61D2" stroke-opacity="0.4"/>
+  <text x="140" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" fill="#ff7ad8">DEV COCKPIT</text>
 
-  <rect x="228" y="145" width="80" height="18" rx="4" fill="#12D8FA" opacity="0.18"/>
-  <text x="236" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#12D8FA">TERMINAL UI</text>
+  <rect x="267" y="152" width="86" height="20" rx="4" fill="#12D8FA" fill-opacity="0.15" stroke="#12D8FA" stroke-opacity="0.4"/>
+  <text x="276" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" fill="#12d8fa">GRADIENTS</text>
 
-  <!-- Right side: Terminal UI Commands preview -->
-  <text x="480" y="44" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
-  <text x="498" y="44" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe gradient &quot;SYNTHWAVE&quot;</text>
+  <rect x="361" y="152" width="94" height="20" rx="4" fill="#3fb950" fill-opacity="0.15" stroke="#3fb950" stroke-opacity="0.4"/>
+  <text x="370" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" fill="#56d364">TERMINAL UI</text>
 
-  <text x="480" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
-  <text x="498" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe spark 5,12,18,24,35,42,58,80</text>
+  <!-- Right Column: Terminal Window Mockup -->
+  <rect x="495" y="22" width="435" height="162" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Terminal window control dots -->
+  <circle cx="515" cy="38" r="4.5" fill="#ff5f56"/>
+  <circle cx="529" cy="38" r="4.5" fill="#ffbd2e"/>
+  <circle cx="543" cy="38" r="4.5" fill="#27c93f"/>
+  <text x="560" y="42" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#6e7681">clivibe-cli</text>
 
-  <text x="480" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
-  <text x="498" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe chart 10,25,18,34,55,42,60</text>
+  <!-- Terminal Commands -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+    <text x="515" y="66" fill="#5271FF" font-weight="700">❯</text>
+    <text x="532" y="66" fill="#f0f6fc">clivibe doctor</text>
 
-  <text x="480" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
-  <text x="498" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe box &quot;Deployment complete&quot;</text>
+    <text x="515" y="90" fill="#5271FF" font-weight="700">❯</text>
+    <text x="532" y="90" fill="#f0f6fc">clivibe wtf EADDRINUSE</text>
 
-  <text x="480" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
-  <text x="498" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe doctor</text>
+    <text x="515" y="114" fill="#5271FF" font-weight="700">❯</text>
+    <text x="532" y="114" fill="#f0f6fc">clivibe gradient &quot;SYNTHWAVE&quot;</text>
+
+    <text x="515" y="138" fill="#5271FF" font-weight="700">❯</text>
+    <text x="532" y="138" fill="#f0f6fc">clivibe chart 10,25,18,34,55,42</text>
+
+    <text x="515" y="162" fill="#5271FF" font-weight="700">❯</text>
+    <text x="532" y="162" fill="#f0f6fc">clivibe box &quot;Production Ready&quot;</text>
+  </g>
 </svg>
