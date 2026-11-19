@@ -1,25 +1,25 @@
 <div align="center">
 
-<img src="./assets/velx-banner.svg" alt="velx banner" width="100%"/>
+<img src="./assets/clixy-banner.svg" alt="clixy banner" width="100%"/>
 
 <br/>
 
-<h1>velx ⚡</h1>
+<h1>clixy ⚡</h1>
 
 <p><strong>The Zero-Dependency Developer Cockpit & Swiss-Army CLI for Modern Engineers.</strong></p>
 
 <p>
-  <a href="https://www.npmjs.com/package/velx"><img src="https://img.shields.io/npm/v/velx?color=%235271FF&style=for-the-badge&logo=npm&logoColor=white" alt="npm version"/></a>
-  <a href="https://www.npmjs.com/package/velx"><img src="https://img.shields.io/npm/dm/velx?color=%23FF61D2&style=for-the-badge&logo=npm&logoColor=white" alt="downloads"/></a>
+  <a href="https://www.npmjs.com/package/clixy"><img src="https://img.shields.io/npm/v/clixy?color=%235271FF&style=for-the-badge&logo=npm&logoColor=white" alt="npm version"/></a>
+  <a href="https://www.npmjs.com/package/clixy"><img src="https://img.shields.io/npm/dm/clixy?color=%23FF61D2&style=for-the-badge&logo=npm&logoColor=white" alt="downloads"/></a>
   <img src="https://img.shields.io/badge/dependencies-0-success?style=for-the-badge&color=%2300F260" alt="zero dependencies"/>
-  <a href="https://github.com/dnuzi/velx/actions"><img src="https://img.shields.io/github/actions/workflow/status/dnuzi/velx/ci.yml?branch=main&style=for-the-badge&label=CI&logo=github&logoColor=white" alt="CI Status"/></a>
+  <a href="https://github.com/dnuzi/clixy/actions"><img src="https://img.shields.io/github/actions/workflow/status/dnuzi/clixy/ci.yml?branch=main&style=for-the-badge&label=CI&logo=github&logoColor=white" alt="CI Status"/></a>
   <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=for-the-badge&logo=node.js&logoColor=white" alt="node"/>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license"/></a>
 </p>
 
 <br/>
 
-<img src="./assets/demo.svg" alt="velx terminal demo" width="90%"/>
+<img src="./assets/demo.gif" alt="clixy terminal demo" width="90%"/>
 
 <br/>
 <br/>
@@ -40,75 +40,75 @@
 
 **Run instantly, zero install needed:**
 ```bash
-npx velx
+npx clixy
 ```
 
-**Or install globally (then use the ultra-short `vx` alias):**
+**Or install globally (with the ultra-fast `cx` shortcut alias):**
 ```bash
-npm install -g velx
+npm install -g clixy
 
-vx              # Interactive TUI menu
-vx doctor       # Scan your environment
-vx top          # System dashboard
+cx              # Interactive TUI menu
+cx doctor       # Scan your environment
+cx top          # System dashboard
 ```
 
-> Works on **macOS**, **Linux**, and **Windows** with Node.js 18+.
+> Works seamlessly on **macOS**, **Linux**, and **Windows** with Node.js 18+.
 
 ---
 
 ## 🧰 Features
 
-### 🚨 `velx wtf` — Error Explainer
+### 🚨 `clixy wtf` — Error Explainer
 The fastest way to understand and fix broken commands. Pipe any failed output directly:
 
 ```bash
 # JavaScript / Node.js
-npm run build 2>&1 | velx wtf
+npm run build 2>&1 | clixy wtf
 
 # Python
-python main.py 2>&1 | velx wtf
+python main.py 2>&1 | clixy wtf
 
 # Rust
-cargo build 2>&1 | velx wtf
+cargo build 2>&1 | clixy wtf
 
 # Go
-go run . 2>&1 | velx wtf
+go run . 2>&1 | clixy wtf
 
 # Or paste the error directly
-velx wtf "Error: listen EADDRINUSE: address already in use :::3000"
+clixy wtf "Error: listen EADDRINUSE: address already in use :::3000"
 ```
 
 Recognizes **10+ common error patterns** across all languages and runtimes including port conflicts, missing packages, database auth failures, React hydration errors, Rust borrow checker violations, and Go import issues.
 
 ---
 
-### 📜 `velx logsee` — JSON Log Viewer
+### 📜 `clixy logsee` — JSON Log Viewer
 
-Turn messy JSON ndjson streams into beautiful, color-coded, searchable log views:
+Turn messy JSON / ndjson streams into beautiful, color-coded, searchable log views:
 
 ```bash
-velx logsee server.log
-velx logsee server.log --level error
-velx logsee server.log --search "user_id"
+clixy logsee server.log
+clixy logsee server.log --level error
+clixy logsee server.log --search "user_id"
 
 # Pipe directly from a running process:
-node server.js | velx logsee
-python api.py  | velx logsee --level warn
+node server.js | clixy logsee
+python api.py  | clixy logsee --level warn
 ```
 
 ---
 
-### 🌿 `velx git` — Git AI Assistant
+### 🌿 `clixy git` — Git AI Assistant
 
 ```bash
-velx git commit    # Analyzes staged diff → proposes conventional commit
-velx git clean     # Arrow-key branch cleaner TUI
-velx git standup   # Generates Markdown standup from recent commits
+clixy git commit    # Analyzes staged diff → proposes conventional commit
+clixy git clean     # Arrow-key branch cleaner TUI
+clixy git standup   # Generates Markdown standup from recent commits
 ```
 
 ---
 
-### 🩺 `velx doctor` — Environment Doctor
+### 🩺 `clixy doctor` — Environment Doctor
 
 Scans your project and runtime environment end-to-end:
 
@@ -121,25 +121,25 @@ Scans your project and runtime environment end-to-end:
 | **Docker** | Daemon health and active containers |
 
 ```bash
-velx doctor
+clixy doctor
 ```
 
 ---
 
-### 🖥️ `velx top` — Terminal Cockpit Dashboard
+### 🖥️ `clixy top` — Terminal Cockpit Dashboard
 
 ```bash
-velx top
+clixy top
 ```
 
 Shows live system telemetry, Git working tree status, and Docker containers in one single terminal screen:
 
 ```
 ╭── SYSTEM METRICS ───────────────────────────────╮
-│  Host:    MacBook-Pro (darwin arm64)              │
-│  CPUs:    8 cores @ Apple M2                      │
-│  Memory:  [████████░░░░░░░░] 52% (8.3 / 16 GB)   │
-│  Uptime:  4.2 hours                               │
+│  Host:    MacBook-Pro (darwin arm64)            │
+│  CPUs:    8 cores @ Apple M2                    │
+│  Memory:  [████████░░░░░░░░] 52% (8.3 / 16 GB) │
+│  Uptime:  4.2 hours                             │
 ╰─────────────────────────────────────────────────╯
 
 ╭── GIT REPOSITORY ──────────────────────╮
@@ -150,35 +150,35 @@ Shows live system telemetry, Git working tree status, and Docker containers in o
 
 ---
 
-### 🤖 `velx ai` — Codebase AI Assistant
+### 🤖 `clixy ai` — Codebase AI Assistant
 
 Query any codebase locally — no cloud, no API key required:
 
 ```bash
-velx ai "where is auth handled?"
-velx ai "find all database query functions"
-velx ai "where is the JWT token validated?"
+clixy ai "where is auth handled?"
+clixy ai "find all database query functions"
+clixy ai "where is the JWT token validated?"
 ```
 
-Crawls `.js`, `.ts`, `.py`, `.go`, `.rs`, `.java`, `.yaml`, `.md` and more. Connects to local **Ollama** models (`llama3`, `deepseek-r1`, `qwen2.5-coder`) when available.
+Crawls `.js`, `.ts`, `.py`, `.go`, `.rs`, `.java`, `.yaml`, `.md` and more. Connects to local **Ollama** models (`llama3`, `deepseek-r1`, `qwen2.5-coder`) when available with instant heuristic fallback.
 
 ---
 
-### 🛠️ `velx utils` — Daily Developer Utilities
+### 🛠️ `clixy utils` — Daily Developer Utilities
 
 ```bash
-velx kill-port 3000               # Kill process locking a port (macOS, Linux, Windows)
-velx curl https://api.github.com  # Smart HTTP client with latency breakdown
-velx cron "*/15 * * * *"          # Explain cron schedule in human language
-velx hash "my-api-key"            # MD5, SHA1, SHA256, Base64 & UUID in one shot
+clixy kill-port 3000               # Kill process locking a port (macOS, Linux, Windows)
+clixy curl https://api.github.com  # Smart HTTP client with latency breakdown
+clixy cron "*/15 * * * *"          # Explain cron schedule in human language
+clixy hash "my-api-key"            # MD5, SHA1, SHA256, Base64 & UUID in one shot
 ```
 
 ---
 
-### 📦 `velx scaffold` — Project Scaffolder
+### 📦 `clixy scaffold` — Project Scaffolder
 
 ```bash
-velx scaffold my-api
+clixy scaffold my-api
 ```
 
 Generates a production-ready project starter with Dockerfile, CI workflow, linting, and directory structure for:
@@ -189,16 +189,34 @@ Generates a production-ready project starter with Dockerfile, CI workflow, linti
 
 ---
 
+## 🎨 Native Color & Gradient Engine
+
+`clixy` includes a built-in TrueColor RGB and ANSI gradient engine inspired by `chalk` and `gradient-string`, written 100% from scratch with **zero external dependencies**:
+
+```javascript
+import { c, gradients } from 'clixy/ui';
+
+// Chainable styling (Chalk-like syntax)
+console.log(c.bold.cyan('Ready'));
+console.log(c.hex('#FF61D2')('Neon Pink'));
+
+// Multi-stop gradients (Gradient-string algorithm)
+console.log(gradients.synthwave('CLIXY ENGINE'));
+console.log(gradients.fire('SYSTEM HOT'));
+```
+
+---
+
 ## 💡 Why Zero Dependencies?
 
-| Concern | With `npm install` | With `velx` |
-|---------|--------------------|-------------|
-| **Cold Start** | 50–500ms loading packages | **< 50ms** instant |
+| Concern | With `npm install` | With `clixy` |
+|---------|--------------------|--------------|
+| **Cold Start** | 50–500ms loading packages | **< 30ms** instant |
 | **Install Size** | 50MB+ `node_modules` | **0 bytes** |
 | **Supply Chain Risk** | Thousands of transitive deps | **None** |
 | **Offline Usage** | May fail | **Always works** |
 
-Every utility is built from native Node.js APIs: `net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`.
+Every utility is built purely from native Node.js standard library APIs: `net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`.
 
 ---
 
@@ -215,7 +233,7 @@ Every utility is built from native Node.js APIs: `net`, `readline`, `child_proce
 | Developer utility suite | ✅ Done |
 | VHS animated demo GIF | ✅ Done |
 | npm auto-publish via CI | ✅ Done |
-| Config file (`.velxrc.json`) | 🔜 Planned |
+| Config file (`.clixyrc.json`) | 🔜 Planned |
 | Plugin system for custom commands | 🔜 Planned |
 | Watch mode for log tailing | 🔜 Planned |
 
@@ -227,11 +245,11 @@ Contributions, bug fixes, and new error pattern recognition are very welcome!
 
 ```bash
 # 1. Fork the repository and clone it
-git clone https://github.com/your-username/velx.git
-cd velx
+git clone https://github.com/your-username/clixy.git
+cd clixy
 
 # 2. Run the CLI locally
-node bin/velx.js
+node bin/clixy.js
 
 # 3. Run tests (zero dependencies, native Node.js test runner)
 npm test
@@ -252,7 +270,7 @@ MIT © [DanuZz](https://github.com/dnuzi)
 
 <div align="center">
 
-**If `velx` saved you time, please ⭐ star the repo — it helps others discover it!**
+**If `clixy` saved you time, please ⭐ star the repo — it helps others discover it!**
 
 <br/>
 

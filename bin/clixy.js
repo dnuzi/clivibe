@@ -3,6 +3,6 @@
 import { runCli } from '../src/index.js';
 
 runCli().catch((err) => {
-  console.error('\x1b[31m%s\x1b[0m', `velx fatal error: ${err.message}`);
+  console.error('\x1b[31m%s\x1b[0m', `clixy fatal error: ${err.message}`);
   process.exit(1);
 });

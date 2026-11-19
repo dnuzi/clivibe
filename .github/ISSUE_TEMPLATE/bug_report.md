@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve DevPulse
+about: Create a report to help us improve clixy
 title: '[BUG] '
 labels: bug
 assignees: ''
@@ -21,4 +21,4 @@ A clear description of what you expected to happen.
 **Environment:**
 - OS: [e.g. Windows 11, macOS Sequoia, Ubuntu 24.04]
 - Node version: [e.g. 20.10.0]
-- DevPulse version: [e.g. 1.0.0]
+- clixy version: [e.g. 1.0.0]

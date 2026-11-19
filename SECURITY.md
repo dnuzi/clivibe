@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within DevPulse, please report it privately:
+If you discover a security vulnerability within clixy, please report it privately:
 
 - Open a private security advisory on GitHub under the **Security** tab.
 - Or email: `danuz.dev@gmail.com`

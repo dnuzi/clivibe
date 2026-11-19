@@ -1,23 +1,23 @@
 {
-  "name": "velx",
+  "name": "clixy",
   "version": "1.0.0",
   "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities.",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "velx": "./bin/velx.js",
-    "vx": "./bin/velx.js"
+    "clixy": "./bin/clixy.js",
+    "cx": "./bin/clixy.js"
   },
   "scripts": {
-    "start": "node bin/velx.js",
+    "start": "node bin/clixy.js",
     "test": "node --test tests/cli.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dnuzi/velx.git"
+    "url": "git+https://github.com/dnuzi/clixy.git"
   },
   "keywords": [
-    "velx",
+    "clixy",
     "zero-dependencies",
     "cli",
     "developer-tools",
@@ -34,9 +34,9 @@
   "author": "DanuZz <danuz.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dnuzi/velx/issues"
+    "url": "https://github.com/dnuzi/clixy/issues"
   },
-  "homepage": "https://github.com/dnuzi/velx#readme",
+  "homepage": "https://github.com/dnuzi/clixy#readme",
   "engines": {
     "node": ">=18.0.0"
   }

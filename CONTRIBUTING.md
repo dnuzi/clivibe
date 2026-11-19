@@ -1,12 +1,12 @@
-# Contributing to DevPulse
+# Contributing to clixy
 
-Thank you for your interest in contributing to DevPulse! We welcome contributions, bug fixes, feature proposals, and ideas from everyone.
+Thank you for your interest in contributing to clixy! We welcome contributions, bug fixes, feature proposals, and ideas from everyone.
 
 ---
 
 ## Zero-Dependency Philosophy
 
-DevPulse is committed to **zero external runtime dependencies**. All features must be implemented using native Node.js APIs (`net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`, etc.).
+clixy is committed to **zero external runtime dependencies**. All features must be implemented using native Node.js APIs (`net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`, etc.).
 
 Before submitting a PR:
 - Do not add packages to `dependencies` in `package.json`.
@@ -19,12 +19,12 @@ Before submitting a PR:
 1. Fork the repository on GitHub.
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/<your-username>/devpulse.git
-   cd devpulse
+   git clone https://github.com/<your-username>/clixy.git
+   cd clixy
    ```
 3. Run the CLI locally:
    ```bash
-   node bin/devpulse.js
+   node bin/clixy.js
    ```
 4. Run the automated test suite:
    ```bash

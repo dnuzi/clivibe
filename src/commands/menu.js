@@ -24,7 +24,7 @@ export async function showMenu() {
       { name: '📦 Project Scaffolder', value: 'scaffold', desc: 'Generate production-ready starters' },
       { name: '🤖 Local AI Assistant', value: 'ai', desc: 'Ask questions about codebase' },
       { name: '🛠️  Daily Utilities', value: 'utils', desc: 'Kill-port, smart curl, cron & hash tools' },
-      { name: '❌ Exit', value: 'exit', desc: 'Quit devpulse' }
+      { name: '❌ Exit', value: 'exit', desc: 'Quit clixy' }
     ]
   });
 
