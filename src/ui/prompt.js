@@ -4,7 +4,6 @@ import { c } from './colors.js';
 export function promptSelect({ message, choices }) {
   return new Promise((resolve) => {
     if (!process.stdin.isTTY) {
-      // Fallback for non-interactive
       resolve(choices[0].value !== undefined ? choices[0].value : choices[0]);
       return;
     }
@@ -21,7 +20,6 @@ export function promptSelect({ message, choices }) {
 
     function render(firstTime = false) {
       if (!firstTime) {
-        // move cursor up
         stdout.write(`\x1b[${choices.length}A`);
       }
 
@@ -79,6 +77,23 @@ export function promptInput(question, defaultValue = '') {
     rl.question(c.cyan('? ') + c.bold(display), (answer) => {
       rl.close();
       resolve(answer.trim() || defaultValue);
+    });
+  });
+}
+
+export function promptConfirm(question, defaultValue = true) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    const suffix = defaultValue ? '[Y/n]' : '[y/N]';
+    rl.question(c.cyan('? ') + c.bold(`${question} ${c.dim(suffix)} `), (answer) => {
+      rl.close();
+      const clean = answer.trim().toLowerCase();
+      if (!clean) return resolve(defaultValue);
+      resolve(clean === 'y' || clean === 'yes');
     });
   });
 }

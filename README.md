@@ -6,14 +6,15 @@
 
 <h1>clivibe ⚡</h1>
 
-<p><strong>The Zero-Dependency Developer Cockpit & Swiss-Army CLI for Modern Engineers.</strong></p>
+<p><strong>The Zero-Dependency Developer Cockpit, Swiss-Army CLI & Terminal UI Design System for Modern Engineers.</strong></p>
 
 <p>
   <a href="https://www.npmjs.com/package/clivibe"><img src="https://img.shields.io/npm/v/clivibe?color=%235271FF&style=for-the-badge&logo=npm&logoColor=white" alt="npm version"/></a>
   <a href="https://www.npmjs.com/package/clivibe"><img src="https://img.shields.io/npm/dm/clivibe?color=%23FF61D2&style=for-the-badge&logo=npm&logoColor=white" alt="downloads"/></a>
   <img src="https://img.shields.io/badge/dependencies-0-success?style=for-the-badge&color=%2300F260" alt="zero dependencies"/>
   <a href="https://github.com/dnuzi/clivibe/actions"><img src="https://img.shields.io/github/actions/workflow/status/dnuzi/clivibe/ci.yml?branch=main&style=for-the-badge&label=CI&logo=github&logoColor=white" alt="CI Status"/></a>
-  <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=for-the-badge&logo=node.js&logoColor=white" alt="node"/>
+  <a href="https://github.com/dnuzi/clivibe/discussions"><img src="https://img.shields.io/badge/discussions-active-blueviolet?style=for-the-badge&logo=github&logoColor=white" alt="Discussions"/></a>
+  <a href="https://github.com/sponsors/dnuzi"><img src="https://img.shields.io/badge/sponsor-💖-ea4aaa?style=for-the-badge&logo=github-sponsors&logoColor=white" alt="Sponsor"/></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="license"/></a>
 </p>
 
@@ -26,10 +27,11 @@
 
 <p>
   <a href="#-quickstart"><strong>Quickstart</strong></a> ·
-  <a href="#-features"><strong>Features</strong></a> ·
+  <a href="#-terminal-ui-design-suite-zero-deps"><strong>UI Design Suite</strong></a> ·
+  <a href="#-developer-cockpit-features"><strong>Developer Cockpit</strong></a> ·
   <a href="#-why-zero-dependencies"><strong>Philosophy</strong></a> ·
   <a href="#-contributing"><strong>Contributing</strong></a> ·
-  <a href="#-roadmap"><strong>Roadmap</strong></a>
+  <a href="#-sponsorship"><strong>Sponsor</strong></a>
 </p>
 
 </div>
@@ -38,25 +40,142 @@
 
 ## ⚡ Quickstart
 
-**Run instantly, zero install needed:**
+**Run instantly from terminal with zero installation:**
 ```bash
 npx clivibe
 ```
 
-**Or install globally (with the ultra-fast `cv` shortcut alias):**
+**Or install globally (provides both `clivibe` and the lightning-fast `cv` alias):**
 ```bash
 npm install -g clivibe
 
 cv              # Interactive TUI menu
 cv doctor       # Scan your environment
 cv top          # System dashboard
+cv image logo.png  # Preview any image in TrueColor inside terminal
 ```
 
-> Works seamlessly on **macOS**, **Linux**, and **Windows** with Node.js 18+.
+**Or import into your own Node.js project as a library:**
+```javascript
+import { c, chalk, gradient, renderImage, boxen, createSpinner, ProgressBar, sparkline, plot } from 'clivibe';
+```
+
+> Works natively on **macOS**, **Linux**, and **Windows** with Node.js 18+.
 
 ---
 
-## 🧰 Features
+## 🎨 Terminal UI Design Suite (Zero Dependencies)
+
+`clivibe` isn't just a CLI — it is also a complete, drop-in design system for building beautiful terminal apps without inflating your `node_modules`.
+
+### 1. 🌈 Native Chalk Replacement (`c` or `chalk`)
+Zero-dependency, chainable ANSI & TrueColor 24-bit styling:
+
+```javascript
+import { c, chalk } from 'clivibe';
+
+console.log(c.bold.red('Error: connection timed out'));
+console.log(c.bgHex('#5271FF').white.bold(' NEW '));
+console.log(c.hex('#FF61D2').underline('Neon pink link'));
+```
+
+### 2. 🌌 Multi-Stop Gradient Engine (`gradient-string` alternative)
+Multi-stop RGB color interpolation with gorgeous built-in palettes:
+
+```javascript
+import { gradient, gradients } from 'clivibe';
+
+// Built-in presets: synthwave, fire, cyber, retro, aurora, sunset
+console.log(gradients.synthwave('CLIVIBE GRADIENT ENGINE'));
+console.log(gradients.fire('FIRE IN THE DISCO'));
+
+// Custom gradient
+const customGrad = gradient(['#FF007A', '#7928CA', '#00DFD8']);
+console.log(customGrad('Custom multi-stop colors!'));
+```
+
+### 3. 🖼️ Terminal Image Previewer (`terminal-image` alternative)
+Decodes PNG (using native `zlib`), BMP, and PPM in pure Node.js and renders them using Unicode half-blocks (`▀`) in 24-bit TrueColor:
+
+```bash
+# From CLI:
+clivibe image ./assets/logo.png
+```
+
+```javascript
+// As a library:
+import { renderImage, renderAscii } from 'clivibe';
+
+// TrueColor terminal rendering
+console.log(renderImage('./screenshot.png', { width: 60 }));
+
+// Pure ASCII characters fallback
+console.log(renderAscii('./screenshot.png', { width: 40 }));
+```
+
+### 4. 📦 Boxen-Compatible ANSI Boxes
+Create rounded, double, or bold borders with custom titles and alignments:
+
+```javascript
+import { boxen, createBox } from 'clivibe';
+
+console.log(boxen('Server listening on http://localhost:3000', {
+  title: '🚀 Deployment Ready',
+  titleAlignment: 'center',
+  borderColor: '#5271FF',
+  borderStyle: 'round',
+  padding: 1
+}));
+```
+
+### 5. ⏳ Ora-Compatible Spinners
+Zero-dependency animated terminal spinners with automatic TTY cursor control:
+
+```javascript
+import { createSpinner } from 'clivibe';
+
+const spinner = createSpinner('Connecting to database...').start();
+setTimeout(() => {
+  spinner.succeed('Connected successfully!');
+}, 1000);
+```
+
+### 6. 📊 Progress Bar (`cli-progress` alternative)
+Smooth animated progress bar with ETA, elapsed time, and gradient fills:
+
+```javascript
+import { ProgressBar, gradients } from 'clivibe';
+
+const bar = new ProgressBar(100, {
+  gradient: gradients.synthwave,
+  width: 30
+});
+
+bar.update(45); // [█████████████░░░░░░░] 45% | 45/100 | ETA: 1.2s
+```
+
+### 7. 📈 Sparklines & 2D Line Charts (`asciichart` alternative)
+Render inline data trends or full 2D terminal line graphs:
+
+```bash
+# From CLI:
+clivibe chart 10,25,18,34,42,29,55,48,62
+clivibe spark 1,4,2,8,12,6,15,9,20
+```
+
+```javascript
+// As a library:
+import { sparkline, plot, gradients } from 'clivibe';
+
+console.log(sparkline([1, 4, 2, 8, 12, 6, 15, 9, 20], { gradient: gradients.synthwave }));
+// Output:  ▂ ▃▅▂▄▆▃█
+
+console.log(plot([10, 25, 18, 34, 42, 29, 55, 48, 62], { height: 6, gradient: gradients.cyber }));
+```
+
+---
+
+## 🧰 Developer Cockpit Features
 
 ### 🚨 `clivibe wtf` — Error Explainer
 The fastest way to understand and fix broken commands. Pipe any failed output directly:
@@ -189,53 +308,32 @@ Generates a production-ready project starter with Dockerfile, CI workflow, linti
 
 ---
 
-## 🎨 Native Color & Gradient Engine
-
-`clivibe` includes a built-in TrueColor RGB and ANSI gradient engine inspired by `chalk` and `gradient-string`, written 100% from scratch with **zero external dependencies**:
-
-```javascript
-import { c, gradients } from 'clivibe/ui';
-
-// Chainable styling (Chalk-like syntax)
-console.log(c.bold.cyan('Ready'));
-console.log(c.hex('#FF61D2')('Neon Pink'));
-
-// Multi-stop gradients (Gradient-string algorithm)
-console.log(gradients.synthwave('CLIVIBE ENGINE'));
-console.log(gradients.fire('SYSTEM HOT'));
-```
-
----
-
 ## 💡 Why Zero Dependencies?
 
-| Concern | With `npm install` | With `clivibe` |
-|---------|--------------------|----------------|
-| **Cold Start** | 50–500ms loading packages | **< 30ms** instant |
+| Concern | With other libraries (`chalk`, `boxen`, etc.) | With `clivibe` |
+|---------|-----------------------------------------------|----------------|
+| **Cold Start** | 50–500ms loading 30+ transitive packages | **< 20ms** instant |
 | **Install Size** | 50MB+ `node_modules` | **0 bytes** |
-| **Supply Chain Risk** | Thousands of transitive deps | **None** |
-| **Offline Usage** | May fail | **Always works** |
+| **Supply Chain Risk** | Hundreds of dependencies to audit | **None** |
+| **Offline Usage** | Package lock resolution required | **Always works** |
 
-Every utility is built purely from native Node.js standard library APIs: `net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `http`.
+Every utility and UI component is built purely from native Node.js standard library APIs: `net`, `readline`, `child_process`, `crypto`, `os`, `fs`, `zlib`, `http`.
 
 ---
 
-## 🗺️ Roadmap
+## 💬 Community & Discussions
 
-| Feature | Status |
-|---------|--------|
-| Multi-language error patterns | ✅ Done |
-| JSON log viewer with search | ✅ Done |
-| Git smart commit + standup | ✅ Done |
-| Environment doctor | ✅ Done |
-| System + Docker dashboard | ✅ Done |
-| Local AI codebase search | ✅ Done |
-| Developer utility suite | ✅ Done |
-| VHS animated demo GIF | ✅ Done |
-| npm auto-publish via CI | ✅ Done |
-| Config file (`.cliviberc.json`) | 🔜 Planned |
-| Plugin system for custom commands | 🔜 Planned |
-| Watch mode for log tailing | 🔜 Planned |
+Have a question, feature idea, or error pattern suggestion?
+Join the conversation in [GitHub Discussions](https://github.com/dnuzi/clivibe/discussions)!
+
+---
+
+## 💖 Sponsorship
+
+If `clivibe` makes your life easier or speeds up your workflow, please consider sponsoring:
+
+- [Sponsor on GitHub](https://github.com/sponsors/dnuzi)
+- [Buy Me a Coffee](https://buymeacoffee.com/dnuzi)
 
 ---
 
@@ -254,9 +352,6 @@ node bin/clivibe.js
 # 3. Run tests (zero dependencies, native Node.js test runner)
 npm test
 ```
-
-> **Adding a new error pattern?** Drop a few lines into [`src/commands/wtf.js`](./src/commands/wtf.js).  
-> **Adding a new utility?** Create a file in [`src/commands/`](./src/commands/) and register it in [`src/index.js`](./src/index.js).
 
 Please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) first.
 

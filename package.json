@@ -1,9 +1,18 @@
 {
   "name": "clivibe",
-  "version": "1.0.0",
-  "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities.",
+  "version": "1.1.0",
+  "description": "⚡ The Zero-Dependency Developer Cockpit, CLI Suite & Terminal UI Engine. Chalk, gradient-string, terminal-image, boxen, asciichart & progress in pure native Node.js.",
   "type": "module",
   "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./ui": "./src/ui/index.js",
+    "./colors": "./src/ui/colors.js",
+    "./image": "./src/ui/image.js",
+    "./box": "./src/ui/box.js",
+    "./chart": "./src/ui/chart.js",
+    "./progress": "./src/ui/progress.js"
+  },
   "bin": {
     "clivibe": "./bin/clivibe.js",
     "cv": "./bin/clivibe.js"
@@ -20,9 +29,16 @@
     "clivibe",
     "zero-dependencies",
     "cli",
+    "chalk",
+    "gradient-string",
+    "terminal-image",
+    "boxen",
+    "asciichart",
+    "cli-progress",
     "developer-tools",
     "tui",
     "terminal",
+    "terminal-ui",
     "git",
     "docker",
     "error-explainer",
