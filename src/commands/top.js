@@ -21,7 +21,7 @@ function getMemoryBar(percent, width = 24) {
 
 export function showDashboard() {
   console.clear();
-  console.log(`\n${badges.tag('DEVPULSE COCKPIT & SYSTEM DASHBOARD')}\n`);
+  console.log(`\n${badges.primary('CLIVIBE COCKPIT & SYSTEM DASHBOARD')}\n`);
 
   // System Metrics
   const totalMem = os.totalmem();
@@ -64,10 +64,10 @@ export function showDashboard() {
   const dockerPs = safeExec('docker ps --format "{{.Names}}\t{{.Status}}\t{{.Ports}}"');
   if (dockerPs) {
     const containers = dockerPs.split('\n').filter(Boolean).map((line) => line.split('\t'));
-    console.log(c.bold(c.hex('#12D8FA')('  📦 Active Docker Containers:')));
+    console.log(c.bold(c.hex('#12D8FA')('  ● Active Containers:')));
     console.log(renderTable(['Name', 'Status', 'Ports'], containers));
     console.log('');
   } else {
-    console.log(c.dim('  📦 Docker daemon inactive or no containers running.\n'));
+    console.log(c.dim('  ● Container daemon inactive or no containers running.\n'));
   }
 }

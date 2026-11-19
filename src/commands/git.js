@@ -26,16 +26,16 @@ export async function gitHelper(subcommand, options = {}) {
   } else if (subcommand === 'standup') {
     await handleStandup(options.days || 1);
   } else {
-    console.log(c.cyan(`\n${badges.tag('DEVPULSE GIT COMPANION')}`));
+    console.log(c.cyan(`\n${badges.primary('CLIVIBE GIT COMPANION')}`));
     console.log(`\nCommands:`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git commit')}   - Smart conventional commit from diff`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git clean')}    - TUI branch cleaner`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git standup')}  - Standup report from recent commits\n`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe git commit')}   - Smart conventional commit from diff`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe git clean')}    - TUI branch cleaner`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe git standup')}  - Standup report from recent commits\n`);
   }
 }
 
 async function handleAutoCommit() {
-  console.log(`\n${badges.tag('AI-STYLE SMART COMMIT')}\n`);
+  console.log(`\n${badges.primary('SMART COMMIT GENERATOR')}\n`);
 
   let stagedDiff = runGit('diff --cached --stat');
   if (!stagedDiff) {
@@ -164,7 +164,7 @@ async function handleBranchClean() {
 }
 
 async function handleStandup(days = 1) {
-  console.log(`\n${badges.tag(`STANDUP REPORT - LAST ${days} DAY(S)`)}\n`);
+  console.log(`\n${badges.primary(`STANDUP REPORT - LAST ${days} DAY(S)`)}\n`);
   const author = runGit('config user.name') || '';
   const since = `${days} days ago`;
   const logOutput = runGit(`log --since="${since}" --author="${author}" --oneline --no-merges`);
@@ -176,7 +176,7 @@ async function handleStandup(days = 1) {
 
   const commits = logOutput.split('\n').filter(Boolean);
   const standupReport = [
-    `### 🚀 Standup Report (${new Date().toLocaleDateString()})`,
+    `### Standup Report (${new Date().toLocaleDateString()})`,
     '',
     `**Done / Completed:**`,
     ...commits.map((c) => `- ${c.replace(/^[a-f0-9]+\s+/, '')}`),

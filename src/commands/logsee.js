@@ -37,7 +37,7 @@ export async function viewLogs(filePath, options = {}) {
   if (!rawContent) {
     // Generate simulated high-tech demo logs if no file/pipe is provided
     console.log(c.cyan(`\nℹ No log file or pipe provided. Showing live demo logs:`));
-    console.log(c.dim(`  Tip: Pipe your logs with: app | devpulse logsee\n`));
+    console.log(c.dim(`  Tip: Pipe your logs with: app | clivibe logsee\n`));
     const demoLogs = [
       { timestamp: new Date(Date.now() - 5000).toISOString(), level: 'INFO', service: 'auth-api', msg: 'JWT issued for user_1092', status: 200, duration_ms: 18 },
       { timestamp: new Date(Date.now() - 4200).toISOString(), level: 'INFO', service: 'gateway', msg: 'Incoming GET /api/v1/orders', status: 200, duration_ms: 45 },

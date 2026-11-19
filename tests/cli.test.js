@@ -12,7 +12,7 @@ import * as clivibe from '../src/index.js';
 
 test('clivibe --version outputs correct version', () => {
   const output = execSync('node bin/clivibe.js --version', { encoding: 'utf-8' });
-  assert.match(output, /clivibe v1\.1\.0/);
+  assert.match(output, /clivibe v1\.2\.0/);
 });
 
 test('clivibe --help displays all primary commands and UI suite', () => {
@@ -105,7 +105,6 @@ test('UI progress bar initializes and renders', () => {
 
 test('Library exports all UI and CLI components', () => {
   assert.ok(typeof clivibe.c === 'function');
-  assert.ok(typeof clivibe.chalk === 'function');
   assert.ok(typeof clivibe.gradient === 'function');
   assert.ok(typeof clivibe.renderImage === 'function');
   assert.ok(typeof clivibe.boxen === 'function');
@@ -114,4 +113,9 @@ test('Library exports all UI and CLI components', () => {
   assert.ok(typeof clivibe.plot === 'function');
   assert.ok(typeof clivibe.ProgressBar === 'function');
   assert.ok(typeof clivibe.createSpinner === 'function');
+  assert.ok(typeof clivibe.renderGauge === 'function');
+  assert.ok(typeof clivibe.renderTree === 'function');
+  assert.ok(typeof clivibe.badge === 'function');
+  assert.ok(typeof clivibe.divider === 'function');
+  assert.ok(typeof clivibe.keyvalue === 'function');
 });

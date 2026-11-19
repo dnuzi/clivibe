@@ -25,7 +25,7 @@ export async function runCli(argv = process.argv.slice(2)) {
   }
 
   if (cmd === '-v' || cmd === '--version') {
-    console.log('clivibe v1.1.0');
+    console.log('clivibe v1.2.0');
     return;
   }
 

@@ -1,7 +1,7 @@
 {
   "name": "clivibe",
-  "version": "1.1.0",
-  "description": "⚡ The Zero-Dependency Developer Cockpit, CLI Suite & Terminal UI Engine. Chalk, gradient-string, terminal-image, boxen, asciichart & progress in pure native Node.js.",
+  "version": "1.2.0",
+  "description": "Zero-dependency terminal color, gradient, and UI toolkit for Node.js.",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -11,7 +11,8 @@
     "./image": "./src/ui/image.js",
     "./box": "./src/ui/box.js",
     "./chart": "./src/ui/chart.js",
-    "./progress": "./src/ui/progress.js"
+    "./progress": "./src/ui/progress.js",
+    "./widgets": "./src/ui/widgets.js"
   },
   "bin": {
     "clivibe": "./bin/clivibe.js",
@@ -27,23 +28,18 @@
   },
   "keywords": [
     "clivibe",
-    "zero-dependencies",
-    "cli",
-    "chalk",
-    "gradient-string",
-    "terminal-image",
-    "boxen",
-    "asciichart",
-    "cli-progress",
-    "developer-tools",
-    "tui",
     "terminal",
+    "cli",
+    "tui",
     "terminal-ui",
+    "colors",
+    "gradient",
+    "ansi",
+    "zero-dependencies",
+    "developer-tools",
     "git",
     "docker",
-    "error-explainer",
     "log-viewer",
-    "swiss-army-knife",
     "productivity",
     "npx"
   ],

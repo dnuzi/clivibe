@@ -13,8 +13,8 @@ export const ASCII_LOGO = `
 export function showBanner() {
   console.log(gradients.synthwave(ASCII_LOGO.trim()));
   console.log(
-    c.bold.hex('#8892b0')('  ⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI') +
-    c.hex('#5271FF')(' [v1.1.0]\n')
+    c.bold.hex('#8892b0')('  ◆ The Zero-Dependency Developer Cockpit & Terminal UI System') +
+    c.hex('#5271FF')(' [v1.2.0]\n')
   );
 }
 

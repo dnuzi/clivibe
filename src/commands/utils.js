@@ -14,22 +14,22 @@ export async function handleUtils(subtool, args = []) {
   } else if (subtool === 'hash') {
     handleHash(args.join(' '));
   } else {
-    console.log(`\n${badges.tag('DEVPULSE DEVELOPER UTILITIES')}\n`);
+    console.log(`\n${badges.primary('CLIVIBE DEVELOPER UTILITIES')}\n`);
     console.log(`Commands:`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse utils port <port>')}     - Inspect and terminate process on port`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse utils curl <url>')}       - Smart HTTP tester with latency metrics`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse utils cron "<expr>">')}    - Cron expression human explainer`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse utils hash <text>')}      - MD5, SHA256, Base64 & UUID generator\n`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe utils port <port>')}     - Inspect and terminate process on port`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe utils curl <url>')}       - Smart HTTP tester with latency metrics`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe utils cron "<expr>"')}    - Cron expression human explainer`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe utils hash <text>')}      - MD5, SHA256, Base64 & UUID generator\n`);
   }
 }
 
 async function handlePort(port) {
   if (!port) {
-    console.log(c.yellow(`\n${icons.warning} Please specify a port (e.g. devpulse utils port 3000)`));
+    console.log(c.yellow(`\nPlease specify a port (e.g. clivibe kill-port 3000)`));
     return;
   }
 
-  console.log(`\n${badges.tag(`PORT INSPECTOR - :${port}`)}\n`);
+  console.log(`\n${badges.primary(`PORT INSPECTOR - :${port}`)}\n`);
 
   try {
     if (process.platform === 'win32') {
@@ -70,7 +70,7 @@ async function handlePort(port) {
 
 async function handleCurl(url) {
   if (!url) {
-    console.log(c.yellow(`\n${icons.warning} Please provide a URL (e.g. devpulse utils curl https://api.github.com)`));
+    console.log(c.yellow(`\n${icons.warning} Please provide a URL (e.g. clivibe utils curl https://api.github.com)`));
     return;
   }
   const targetUrl = url.startsWith('http') ? url : `http://${url}`;
@@ -107,7 +107,7 @@ async function handleCurl(url) {
 
 function handleCron(expr) {
   if (!expr) {
-    console.log(c.yellow(`\n${icons.warning} Provide a cron expression (e.g. devpulse utils cron "*/15 * * * *")`));
+    console.log(c.yellow(`\n${icons.warning} Provide a cron expression (e.g. clivibe utils cron "*/15 * * * *")`));
     return;
   }
 

@@ -6,12 +6,12 @@ import { createBox } from '../ui/box.js';
 
 export async function askAi(query) {
   if (!query) {
-    console.log(c.yellow(`\n${icons.warning} Please specify a question about your codebase.`));
-    console.log(`Example: ${c.hex('#8be9fd')('devpulse ai "where is auth handled?"')}\n`);
+    console.log(c.yellow(`\nPlease specify a question about your codebase.`));
+    console.log(`Example: ${c.hex('#8be9fd')('clivibe ai "where is auth handled?"')}\n`);
     return;
   }
 
-  console.log(`\n${badges.tag('CODEBASE AI ASSISTANT')}\n`);
+  console.log(`\n${badges.primary('CODEBASE ASSISTANT')}\n`);
   const spinner = createSpinner(`Analyzing repository for: "${query}"...`).start();
 
   // Check if Ollama is running locally

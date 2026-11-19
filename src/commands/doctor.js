@@ -27,7 +27,7 @@ function safeExec(cmd) {
 }
 
 export async function runDoctor() {
-  console.log(`\n${badges.tag('ENVDOCTOR - SYSTEM & PROJECT DIAGNOSTICS')}\n`);
+  console.log(`\n${badges.primary('DIAGNOSTICS - SYSTEM & PROJECT INSPECTION')}\n`);
   const spinner = createSpinner('Scanning developer environment...').start();
 
   const results = [];
@@ -153,7 +153,7 @@ export async function runDoctor() {
         results.push([c.red('✖ Fail'), 'Environment Variables', `Missing in .env: ${missing.slice(0, 3).join(', ')}${missing.length > 3 ? '...' : ''}`]);
       }
     } else {
-      results.push([c.yellow('⚠ Warn'), 'Environment Variables', '.env.example exists but .env is missing!']);
+      results.push([c.yellow('▲ Warn'), 'Environment Variables', '.env.example exists but .env is missing!']);
     }
   }
 
@@ -166,7 +166,7 @@ export async function runDoctor() {
   }
 
   if (occupied.length > 0) {
-    results.push([c.yellow('⚠ Active'), 'Dev Ports in Use', `Ports ${occupied.join(', ')} currently bound`]);
+    results.push([c.yellow('▲ Active'), 'Dev Ports in Use', `Ports ${occupied.join(', ')} currently bound`]);
   } else {
     results.push([c.green('✔ Pass'), 'Dev Ports Status', 'Standard ports (3000, 5173, 8080) are free']);
   }

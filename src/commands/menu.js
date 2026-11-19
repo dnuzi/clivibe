@@ -16,15 +16,15 @@ export async function showMenu() {
   const choice = await promptSelect({
     message: 'Select a developer tool to launch:',
     choices: [
-      { name: '⚡ Dashboard (TUI)', value: 'top', desc: 'Live system, git, docker, and port gauges' },
-      { name: '🚨 Explain Error (wtf)', value: 'wtf', desc: 'Diagnose command failure and suggest fixes' },
-      { name: '📜 JSON Log Viewer (logsee)', value: 'logsee', desc: 'Inspect, filter & pretty-print JSON logs' },
-      { name: '🌿 Git AI Assistant', value: 'git', desc: 'Smart commits, branch cleaner, standup report' },
-      { name: '🩺 Environment Doctor', value: 'doctor', desc: 'Check runtimes, missing envs & port conflicts' },
-      { name: '📦 Project Scaffolder', value: 'scaffold', desc: 'Generate production-ready starters' },
-      { name: '🤖 Local AI Assistant', value: 'ai', desc: 'Ask questions about codebase' },
-      { name: '🛠️  Daily Utilities', value: 'utils', desc: 'Kill-port, smart curl, cron & hash tools' },
-      { name: '❌ Exit', value: 'exit', desc: 'Quit clivibe' }
+      { name: '● Dashboard (TUI)', value: 'top', desc: 'Live system, git, docker, and port gauges' },
+      { name: '● Explain Error (wtf)', value: 'wtf', desc: 'Diagnose command failure and suggest fixes' },
+      { name: '● JSON Log Viewer (logsee)', value: 'logsee', desc: 'Inspect, filter & pretty-print JSON logs' },
+      { name: '● Git Assistant', value: 'git', desc: 'Smart commits, branch cleaner, standup report' },
+      { name: '● Environment Doctor', value: 'doctor', desc: 'Check runtimes, missing envs & port conflicts' },
+      { name: '● Project Scaffolder', value: 'scaffold', desc: 'Generate production-ready starters' },
+      { name: '● Local AI Assistant', value: 'ai', desc: 'Ask questions about codebase' },
+      { name: '● Utilities Suite', value: 'utils', desc: 'Kill-port, smart curl, cron & hash tools' },
+      { name: '× Exit', value: 'exit', desc: 'Quit clivibe' }
     ]
   });
 
@@ -45,6 +45,6 @@ export async function showMenu() {
   } else if (choice === 'utils') {
     await handleUtils();
   } else {
-    console.log(c.dim('Goodbye! 👋\n'));
+    console.log(c.dim('Session finished.\n'));
   }
 }

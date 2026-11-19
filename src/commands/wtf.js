@@ -29,7 +29,7 @@ const ERROR_PATTERNS = [
     type: 'PORT CONFLICT',
     cause: (m) => `Port ${m[1] || 'specified'} is already in use by another process.`,
     fixes: (m) => [
-      `Run ${c.hex('#8be9fd')(`devpulse utils port ${m[1] || 'PORT'}`)} to inspect and terminate it.`,
+      `Run ${c.hex('#8be9fd')(`clivibe kill-port ${m[1] || 'PORT'}`)} to inspect and terminate it.`,
       `Or manually kill: ${c.hex('#f1fa8c')(process.platform === 'win32' ? `npx kill-port ${m[1]}` : `lsof -ti:${m[1]} | xargs kill -9`)}`,
       `Or change the port in your ${c.bold('.env')} file.`
     ]
@@ -154,12 +154,12 @@ export async function explainError(inputError) {
   if (!errorText) {
     console.log(c.yellow(`\n${icons.warning} No error provided to explain.`));
     console.log(c.dim(`Usage:`));
-    console.log(`  ${c.hex('#8be9fd')('devpulse wtf "Error: listen EADDRINUSE :3000"')}`);
-    console.log(`  ${c.hex('#8be9fd')('npm run build 2>&1 | devpulse wtf')}\n`);
+    console.log(`  ${c.hex('#8be9fd')('clivibe wtf "Error: listen EADDRINUSE :3000"')}`);
+    console.log(`  ${c.hex('#8be9fd')('npm run build 2>&1 | clivibe wtf')}\n`);
     return;
   }
 
-  console.log(`\n${badges.tag('DEV-PULSE ERROR ANALYZER')}\n`);
+  console.log(`\n${badges.primary('ERROR ANALYZER')}\n`);
 
   const spinner = createSpinner('Analyzing error signature...').start();
   await new Promise((r) => setTimeout(r, 400));
@@ -184,10 +184,10 @@ export async function explainError(inputError) {
     const boxContent = [
       `${badges.error(matchFound.type)}`,
       '',
-      `${c.bold('💡 Root Cause:')}`,
+      `${c.bold('● Root Cause:')}`,
       `  ${matchFound.cause}`,
       '',
-      `${c.bold('🛠️  Recommended Fixes:')}`,
+      `${c.bold('● Recommended Solutions:')}`,
       ...matchFound.fixes.map((f, i) => `  ${c.hex('#5271FF')(`${i + 1}.`)} ${f}`)
     ].join('\n');
 
@@ -203,13 +203,13 @@ export async function explainError(inputError) {
       `${c.bold('Raw Signature:')}`,
       c.dim(firstFew),
       '',
-      `${c.bold('💡 Analysis:')}`,
+      `${c.bold('● Analysis:')}`,
       `  The process terminated with an unhandled exception or non-zero exit code.`,
       '',
-      `${c.bold('🛠️  Recommended Debug Steps:')}`,
+      `${c.bold('● Recommended Steps:')}`,
       `  1. Run with debug flags: ${c.hex('#8be9fd')('DEBUG=* npm run ...')} or verbose log level.`,
-      `  2. Check your environment with: ${c.hex('#8be9fd')('devpulse doctor')}`,
-      `  3. Check log streams with: ${c.hex('#8be9fd')('devpulse logsee <logfile>')}`
+      `  2. Check your environment with: ${c.hex('#8be9fd')('clivibe doctor')}`,
+      `  3. Check log streams with: ${c.hex('#8be9fd')('clivibe logsee <logfile>')}`
     ].join('\n');
 
     console.log(createBox(boxContent, 'ERROR REPORT', '#FFB199'));

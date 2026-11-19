@@ -5,7 +5,7 @@ import { promptSelect, promptInput } from '../ui/prompt.js';
 import { createSpinner } from '../ui/spinner.js';
 
 export async function scaffoldProject(projectNameArg) {
-  console.log(`\n${badges.tag('PROJECT STARTER SCAFFOLDER')}\n`);
+  console.log(`\n${badges.primary('PROJECT STARTER SCAFFOLDER')}\n`);
 
   const projectName = projectNameArg || (await promptInput('Project directory name', 'my-app'));
   const template = await promptSelect({
