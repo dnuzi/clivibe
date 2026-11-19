@@ -1,111 +1,150 @@
-// Zero-dependency ANSI color and styling utilities
+// Zero-Dependency Native Color & Gradient Engine
+// Inspired by chalk & gradient-string algorithms
+
 const hasColors = !process.env.NO_COLOR && (process.stdout.isTTY || process.env.FORCE_COLOR);
 
-function wrap(open, close) {
-  const fn = (text) => (hasColors ? `\x1b[${open}m${text}\x1b[${close}m` : String(text));
-  fn.bold = (text) => c.bold(fn(text));
-  fn.dim = (text) => c.dim(fn(text));
-  return fn;
-}
+// ANSI Codes mapping
+const ANSI_CODES = {
+  reset: [0, 0],
+  bold: [1, 22],
+  dim: [2, 22],
+  italic: [3, 23],
+  underline: [4, 24],
+  inverse: [7, 27],
+  strikethrough: [9, 29],
+
+  // Foreground standard
+  black: [30, 39],
+  red: [31, 39],
+  green: [32, 39],
+  yellow: [33, 39],
+  blue: [34, 39],
+  magenta: [35, 39],
+  cyan: [36, 39],
+  white: [37, 39],
+  gray: [90, 39],
+
+  // Bright Foreground
+  brightRed: [91, 39],
+  brightGreen: [92, 39],
+  brightYellow: [93, 39],
+  brightBlue: [94, 39],
+  brightMagenta: [95, 39],
+  brightCyan: [96, 39],
+  brightWhite: [97, 39],
+
+  // Background
+  bgBlack: [40, 49],
+  bgRed: [41, 49],
+  bgGreen: [42, 49],
+  bgYellow: [43, 49],
+  bgBlue: [44, 49],
+  bgMagenta: [45, 49],
+  bgCyan: [46, 49],
+  bgWhite: [47, 49],
+  bgGray: [100, 49],
+  bgBrightRed: [101, 49],
+  bgBrightGreen: [102, 49],
+  bgBrightYellow: [103, 49],
+  bgBrightBlue: [104, 49],
+  bgBrightMagenta: [105, 49],
+  bgBrightCyan: [106, 49],
+  bgBrightWhite: [107, 49]
+};
 
 function hexToRgb(hex) {
-  const clean = hex.replace('#', '');
-  const bigint = parseInt(clean, 16);
+  const clean = hex.replace('#', '').trim();
+  const bigint = parseInt(clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean, 16);
   return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
 }
 
-export const c = {
-  reset: wrap(0, 0),
-  bold: wrap(1, 22),
-  dim: wrap(2, 22),
-  italic: wrap(3, 23),
-  underline: wrap(4, 24),
-  inverse: wrap(7, 27),
+// Chainable Builder Pattern (like Chalk)
+function createStyler(openSeq = [], closeSeq = []) {
+  const format = (text) => {
+    if (!hasColors || text === undefined || text === null) return String(text ?? '');
+    const str = String(text);
+    return `${openSeq.map(s => `\x1b[${s}m`).join('')}${str}${closeSeq.map(s => `\x1b[${s}m`).join('')}`;
+  };
 
-  // Standard Colors
-  black: wrap(30, 39),
-  red: wrap(31, 39),
-  green: wrap(32, 39),
-  yellow: wrap(33, 39),
-  blue: wrap(34, 39),
-  magenta: wrap(35, 39),
-  cyan: wrap(36, 39),
-  white: wrap(37, 39),
-  gray: wrap(90, 39),
-
-  // Bright Colors
-  brightRed: wrap(91, 39),
-  brightGreen: wrap(92, 39),
-  brightYellow: wrap(93, 39),
-  brightBlue: wrap(94, 39),
-  brightMagenta: wrap(95, 39),
-  brightCyan: wrap(96, 39),
-  brightWhite: wrap(97, 39),
-
-  // Backgrounds
-  bgBlack: wrap(40, 49),
-  bgRed: wrap(41, 49),
-  bgGreen: wrap(42, 49),
-  bgYellow: wrap(43, 49),
-  bgBlue: wrap(44, 49),
-  bgMagenta: wrap(45, 49),
-  bgCyan: wrap(46, 49),
-  bgWhite: wrap(47, 49),
-  bgGray: wrap(100, 49),
-
-  // TrueColor RGB
-  rgb: (r, g, b) => {
-    const fn = (text) => (hasColors ? `\x1b[38;2;${r};${g};${b}m${text}\x1b[39m` : String(text));
-    fn.bold = (text) => c.bold(fn(text));
-    fn.dim = (text) => c.dim(fn(text));
-    return fn;
-  },
-
-  bgRgb: (r, g, b) => {
-    const fn = (text) => (hasColors ? `\x1b[48;2;${r};${g};${b}m${text}\x1b[49m` : String(text));
-    fn.bold = (text) => c.bold(fn(text));
-    fn.dim = (text) => c.dim(fn(text));
-    return fn;
-  },
-
-  // Hex colors
-  hex: (hexStr) => {
-    const [r, g, b] = hexToRgb(hexStr);
-    return c.rgb(r, g, b);
-  },
-
-  bgHex: (hexStr) => {
-    const [r, g, b] = hexToRgb(hexStr);
-    return c.bgRgb(r, g, b);
-  },
-
-  // Multi-color horizontal gradient
-  gradient: (text, hexColors = ['#FF61D2', '#5271FF', '#12D8FA']) => {
-    if (!hasColors || !text) return text;
-    const cleanChars = Array.from(text);
-    if (cleanChars.length === 0) return '';
-    const rgbs = hexColors.map(hexToRgb);
-
-    return (
-      cleanChars
-        .map((char, i) => {
-          if (char === '\n' || char === '\r') return char;
-          const progress = i / Math.max(1, cleanChars.length - 1);
-          const segment = progress * (rgbs.length - 1);
-          const index = Math.min(Math.floor(segment), rgbs.length - 2);
-          const factor = segment - index;
-
-          const r = Math.round(rgbs[index][0] + factor * (rgbs[index + 1][0] - rgbs[index][0]));
-          const g = Math.round(rgbs[index][1] + factor * (rgbs[index + 1][1] - rgbs[index][1]));
-          const b = Math.round(rgbs[index][2] + factor * (rgbs[index + 1][2] - rgbs[index][2]));
-
-          return `\x1b[38;2;${r};${g};${b}m${char}`;
-        })
-        .join('') + '\x1b[39m'
-    );
+  // Attach all ANSI code properties for chaining (e.g. c.bold.red('...'))
+  for (const [name, [open, close]] of Object.entries(ANSI_CODES)) {
+    Object.defineProperty(format, name, {
+      get() {
+        return createStyler([...openSeq, open], [close, ...closeSeq]);
+      }
+    });
   }
+
+  // TrueColor 24-bit RGB
+  format.rgb = (r, g, b) =>
+    createStyler([...openSeq, `38;2;${r};${g};${b}`], [39, ...closeSeq]);
+
+  format.hex = (hexStr) => {
+    const [r, g, b] = hexToRgb(hexStr);
+    return format.rgb(r, g, b);
+  };
+
+  // Background TrueColor
+  format.bgRgb = (r, g, b) =>
+    createStyler([...openSeq, `48;2;${r};${g};${b}`], [49, ...closeSeq]);
+
+  format.bgHex = (hexStr) => {
+    const [r, g, b] = hexToRgb(hexStr);
+    return format.bgRgb(r, g, b);
+  };
+
+  return format;
+}
+
+export const c = createStyler();
+
+// Gradient-String Engine (0 dependencies)
+export function gradient(colors = ['#FF61D2', '#5271FF', '#12D8FA']) {
+  const rgbs = colors.map(hexToRgb);
+
+  const applyGradientToLine = (line) => {
+    if (!hasColors || !line) return line;
+    const chars = Array.from(line);
+    if (chars.length === 0) return '';
+    if (chars.length === 1) return `\x1b[38;2;${rgbs[0][0]};${rgbs[0][1]};${rgbs[0][2]}m${chars[0]}\x1b[39m`;
+
+    return chars
+      .map((char, i) => {
+        if (char === ' ') return char;
+        const progress = i / (chars.length - 1);
+        const segment = progress * (rgbs.length - 1);
+        const index = Math.min(Math.floor(segment), rgbs.length - 2);
+        const factor = segment - index;
+
+        const r = Math.round(rgbs[index][0] + factor * (rgbs[index + 1][0] - rgbs[index][0]));
+        const g = Math.round(rgbs[index][1] + factor * (rgbs[index + 1][1] - rgbs[index][1]));
+        const b = Math.round(rgbs[index][2] + factor * (rgbs[index + 1][2] - rgbs[index][2]));
+
+        return `\x1b[38;2;${r};${g};${b}m${char}`;
+      })
+      .join('') + '\x1b[39m';
+  };
+
+  const fn = (text) => {
+    if (!text) return '';
+    return String(text).split('\n').map(applyGradientToLine).join('\n');
+  };
+
+  fn.multiline = fn;
+  return fn;
+}
+
+// Built-in Gradient Presets (like gradient-string)
+export const gradients = {
+  retro: gradient(['#FE5F55', '#F0B67F', '#D6D1CD', '#C2BBF0', '#8FB8ED']),
+  fire: gradient(['#FF0844', '#FFB199']),
+  cyber: gradient(['#00F260', '#0575E6']),
+  synthwave: gradient(['#FF61D2', '#FE90AF', '#5271FF', '#12D8FA']),
+  aurora: gradient(['#00c6ff', '#0072ff']),
+  sunset: gradient(['#FA8BFF', '#2BD2FF', '#2BFF88'])
 };
 
+// UI Badges & Icons
 export const icons = {
   success: c.green('✔'),
   error: c.red('✖'),
@@ -122,10 +161,10 @@ export const icons = {
 };
 
 export const badges = {
-  success: (text) => c.bgGreen(c.black(` ${text} `)),
-  error: (text) => c.bgRed(c.brightWhite(` ${text} `)),
-  warning: (text) => c.bgYellow(c.black(` ${text} `)),
-  info: (text) => c.bgCyan(c.black(` ${text} `)),
-  purple: (text) => c.bgHex('#5271FF')(c.brightWhite(` ${text} `)),
-  tag: (text) => c.bgHex('#2E3440')(c.hex('#88C0D0')(` ${text} `))
+  success: (text) => c.bgGreen.black.bold(` ${text} `),
+  error: (text) => c.bgRed.brightWhite.bold(` ${text} `),
+  warning: (text) => c.bgYellow.black.bold(` ${text} `),
+  info: (text) => c.bgCyan.black.bold(` ${text} `),
+  purple: (text) => c.bgHex('#5271FF').brightWhite.bold(` ${text} `),
+  tag: (text) => c.bgHex('#2E3440').hex('#88C0D0').bold(` ${text} `)
 };

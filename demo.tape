@@ -1,31 +1,41 @@
-# VHS tape script for recording DevPulse demo
-# Install VHS: brew install vhs / winget install charmbracelet.vhs
-# Run: vhs demo.tape
+Output assets/demo.gif
 
-Output demo.gif
-
-Set FontSize 16
-Set Width 1200
-Set Height 680
+Set Shell "node"
+Set FontSize 15
+Set Width 1000
+Set Height 600
 Set Padding 20
 Set Theme "Catppuccin Mocha"
+Set TypingSpeed 60ms
+Set Framerate 30
+Set PlaybackSpeed 0.9
 
-Type "npx devpulse"
+Type "node bin/velx.js --help"
+Sleep 200ms
+Enter
+Sleep 2.5s
+
+Type "node bin/velx.js doctor"
+Sleep 200ms
+Enter
+Sleep 3s
+
+Type `node bin/velx.js wtf "Error: listen EADDRINUSE :::3000"`
+Sleep 200ms
+Enter
+Sleep 2.5s
+
+Type "node bin/velx.js logsee"
+Sleep 200ms
 Enter
 Sleep 2s
 
-Type "j"
-Sleep 500ms
-Type "j"
-Sleep 500ms
-
+Type "node bin/velx.js cron ""*/15 * * * *"""
+Sleep 200ms
 Enter
-Sleep 3s
+Sleep 2s
 
-Type "devpulse wtf 'Error: listen EADDRINUSE: address already in use :::3000'"
+Type "node bin/velx.js hash velx"
+Sleep 200ms
 Enter
-Sleep 3s
-
-Type "devpulse top"
-Enter
-Sleep 3s
+Sleep 1.5s
