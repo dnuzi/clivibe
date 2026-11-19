@@ -1,22 +1,23 @@
 {
-  "name": "devpulse",
+  "name": "velx",
   "version": "1.0.0",
-  "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities with 0 external dependencies.",
+  "description": "⚡ The Zero-Dependency Developer Cockpit & Swiss-Army CLI. Error explainer, JSON log viewer, Git AI assistant, environment doctor, TUI dashboard & dev utilities.",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "devpulse": "./bin/devpulse.js",
-    "dp": "./bin/devpulse.js"
+    "velx": "./bin/velx.js",
+    "vx": "./bin/velx.js"
   },
   "scripts": {
-    "start": "node bin/devpulse.js",
+    "start": "node bin/velx.js",
     "test": "node --test tests/cli.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dnuzi/devpulse.git"
+    "url": "git+https://github.com/dnuzi/velx.git"
   },
   "keywords": [
+    "velx",
     "zero-dependencies",
     "cli",
     "developer-tools",
@@ -27,16 +28,15 @@
     "error-explainer",
     "log-viewer",
     "swiss-army-knife",
-    "devops",
     "productivity",
     "npx"
   ],
-  "author": "dnuzi",
+  "author": "DanuZz <danuz.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dnuzi/devpulse/issues"
+    "url": "https://github.com/dnuzi/velx/issues"
   },
-  "homepage": "https://github.com/dnuzi/devpulse#readme",
+  "homepage": "https://github.com/dnuzi/velx#readme",
   "engines": {
     "node": ">=18.0.0"
   }

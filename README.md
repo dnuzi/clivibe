@@ -1,100 +1,132 @@
-# DevPulse ⚡
+<div align="center">
 
-> The Zero-Dependency Developer Cockpit & Swiss-Army CLI for Modern Engineers.
+# velx ⚡
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-success.svg)](package.json)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](package.json)
+**The Zero-Dependency Developer Cockpit & Swiss-Army CLI for Modern Engineers.**
 
-DevPulse combines daily developer chores into a single, high-performance terminal utility built entirely on native Node.js APIs. No `node_modules` required to download or run.
+[![npm version](https://img.shields.io/npm/v/velx?color=blue&style=flat-square)](https://www.npmjs.com/package/velx)
+[![dependencies](https://img.shields.io/badge/dependencies-0-success?style=flat-square)](package.json)
+[![node version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?style=flat-square)](package.json)
+[![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+
+<br/>
+
+<img src="./assets/demo.svg" alt="velx terminal demo" width="100%" />
+
+<br/>
+
+One command. Zero `node_modules` overhead. Instant execution.  
+Diagnose cryptic errors, stream JSON logs, clean Git branches, check environment health, and access daily developer utilities in milliseconds.
+
+</div>
 
 ---
 
-## Quickstart
+## ⚡ Quickstart
 
-Run directly with zero installation:
+Run directly without installing anything:
 
 ```bash
-npx devpulse
+npx velx
 ```
 
 Or install globally:
 
 ```bash
-npm install -g devpulse
+npm install -g velx
 ```
+
+> **Pro-tip:** You can also use the ultra-fast shorthand alias **`vx`**!
+> ```bash
+> vx top
+> vx wtf "Error: listen EADDRINUSE :3000"
+> ```
 
 ---
 
-## Features
+## 🧰 The Developer Suite
 
 ### 1. Interactive Cockpit Menu
-Launch the interactive arrow-driven menu:
+Launch the arrow-key interactive TUI launcher:
 ```bash
-devpulse
+velx
 ```
 
 ### 2. Error Explainer (`wtf`)
-Diagnose error messages or piped stack traces:
+Pipe any failed command or paste an error string to get an instant diagnosis and copyable fixes:
 ```bash
-devpulse wtf "Error: listen EADDRINUSE: address already in use :::3000"
-# or pipe from command
-npm run build 2>&1 | devpulse wtf
+velx wtf "Error: listen EADDRINUSE :3000"
+# or pipe from your terminal:
+npm run build 2>&1 | velx wtf
+python main.py 2>&1 | velx wtf
+cargo build 2>&1 | velx wtf
 ```
 
 ### 3. JSON Log Viewer (`logsee`)
-View and search structured JSON log streams:
+View and search structured JSON log streams with color-coded severity pills:
 ```bash
-devpulse logsee server.log
-devpulse logsee server.log --level error
-cat app.log | devpulse logsee --search "user_id"
+velx logsee server.log
+velx logsee server.log --level error
+cat app.log | velx logsee --search "user_id"
 ```
 
 ### 4. Git Assistant
-Automate daily Git routines:
+Automate daily Git chore workflows:
 ```bash
-devpulse git commit     # Proposes conventional commit message from diff
-devpulse git clean      # Interactive branch cleaner
-devpulse git standup    # Summarizes recent commits into a standup report
+velx git commit     # Proposes conventional commit message from staged diff
+velx git clean      # Interactive branch cleaner
+velx git standup    # Summarizes recent commits into a Markdown standup report
 ```
 
 ### 5. Environment Doctor (`doctor`)
-Inspect system and project dependencies:
+Scan local project manifests, runtime versions (Node, Python, Go, Rust), port collisions, and `.env` discrepancies:
 ```bash
-devpulse doctor
+velx doctor
 ```
 
-### 6. System & Container Dashboard (`top`)
-View memory gauges, listening ports, and active containers:
+### 6. System & Container Cockpit (`top`)
+View memory gauges, listening ports, Docker container health, and Git working tree status:
 ```bash
-devpulse top
+velx top
 ```
 
 ### 7. Codebase Assistant (`ai`)
-Query repository files locally using Ollama or pattern heuristics:
+Query repository files locally using Ollama (`llama3`, `deepseek-r1`) or built-in semantic crawlers:
 ```bash
-devpulse ai "where is authentication defined?"
+velx ai "where is authentication defined?"
 ```
 
-### 8. Developer Utilities (`utils`)
+### 8. Daily Developer Utilities (`utils`)
 Fast helpers for everyday workflows:
 ```bash
-devpulse kill-port 3000                 # Terminate process locking a port
-devpulse curl https://api.github.com   # HTTP client with latency metrics
-devpulse cron "*/15 * * * *"            # Explains cron schedule in plain English
-devpulse hash "input-text"              # MD5, SHA256, Base64 & UUID generator
+velx kill-port 3000                 # Terminate process locking a port
+velx curl https://api.github.com   # HTTP client with latency metrics
+velx cron "*/15 * * * *"            # Explains cron schedule in plain English
+velx hash "input-text"              # MD5, SHA256, Base64 & UUID generator
 ```
 
 ---
 
-## Why Zero Dependencies?
+## 💡 Why Zero Dependencies?
 
-- **Instant execution**: Starts up in milliseconds without downloading dozens of packages.
-- **Security**: No supply-chain risks or third-party vulnerabilities.
-- **Portability**: Runs on any environment with Node.js 18+.
+1. **Instant Cold Start:** Starts in **0.1 seconds**. No waiting for 50MB of third-party packages to download.
+2. **Zero Supply-Chain Risks:** 100% built on native Node.js APIs (`net`, `readline`, `child_process`, `crypto`, `os`, `fs`).
+3. **Universal Portability:** Runs identically on macOS, Linux, and Windows.
 
 ---
 
-## License
+## 🤝 Contributing
 
-MIT © [dnuzi](https://github.com/dnuzi)
+Contributions, new error patterns, and ideas are welcome! See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
+
+```bash
+git clone https://github.com/dnuzi/velx.git
+cd velx
+npm test
+```
+
+---
+
+## 📄 License
+
+MIT © [DanuZz](https://github.com/dnuzi)

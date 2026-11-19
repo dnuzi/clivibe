@@ -26,10 +26,10 @@ jobs:
 
       - name: Verify CLI execution
         run: |
-          node bin/devpulse.js --help
-          node bin/devpulse.js --version
-          node bin/devpulse.js cron "*/15 * * * *"
-          node bin/devpulse.js hash "test-string"
+          node bin/velx.js --help
+          node bin/velx.js --version
+          node bin/velx.js cron "*/15 * * * *"
+          node bin/velx.js hash "test-string"
 
       - name: Run automated test suite
         run: npm test

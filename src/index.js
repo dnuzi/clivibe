@@ -19,29 +19,29 @@ export async function runCli(argv = process.argv.slice(2)) {
   }
 
   if (cmd === '-v' || cmd === '--version') {
-    console.log('devpulse v1.0.0');
+    console.log('velx v1.0.0');
     return;
   }
 
   if (cmd === '-h' || cmd === '--help' || cmd === 'help') {
     showBanner();
-    console.log(`Usage: ${c.bold(c.hex('#5271FF')('devpulse'))} ${c.dim('[command] [options]')}\n`);
+    console.log(`Usage: ${c.bold(c.hex('#5271FF')('velx'))} ${c.dim('[command] [options]')}\n`);
     console.log(c.bold('Commands:'));
-    console.log(`  ${c.hex('#8be9fd')('devpulse')}                    Launch interactive TUI menu`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse wtf [error]')}         Explain failed command/error and suggest fix`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse logsee [file]')}       Stream or view JSON logs with colors & search`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git commit')}          Smart conventional commit generator`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git clean')}           Interactive branch cleaner`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse git standup')}         Generate markdown standup from commits`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse doctor')}              Scan environment, missing envs & ports`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse scaffold [name]')}     Generate production-ready starters`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse top')}                 Terminal cockpit: system, git & docker gauges`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse ai <prompt>')}         Query codebase with local Ollama or heuristics`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse kill-port <port>')}    Kill process occupying port`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse curl <url>')}          Smart cURL with latency breakdown`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse cron "<expr>"')}       Explain cron schedule in plain English`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse hash <string>')}       MD5, SHA256, Base64 & UUID suite`);
-    console.log(`  ${c.hex('#8be9fd')('devpulse utils')}               Access all developer utilities\n`);
+    console.log(`  ${c.hex('#8be9fd')('velx')}                    Launch interactive TUI menu`);
+    console.log(`  ${c.hex('#8be9fd')('velx wtf [error]')}         Explain failed command/error and suggest fix`);
+    console.log(`  ${c.hex('#8be9fd')('velx logsee [file]')}       Stream or view JSON logs with colors & search`);
+    console.log(`  ${c.hex('#8be9fd')('velx git commit')}          Smart conventional commit generator`);
+    console.log(`  ${c.hex('#8be9fd')('velx git clean')}           Interactive branch cleaner`);
+    console.log(`  ${c.hex('#8be9fd')('velx git standup')}         Generate markdown standup from commits`);
+    console.log(`  ${c.hex('#8be9fd')('velx doctor')}              Scan environment, missing envs & ports`);
+    console.log(`  ${c.hex('#8be9fd')('velx scaffold [name]')}     Generate production-ready starters`);
+    console.log(`  ${c.hex('#8be9fd')('velx top')}                 Terminal cockpit: system, git & docker gauges`);
+    console.log(`  ${c.hex('#8be9fd')('velx ai <prompt>')}         Query codebase with local Ollama or heuristics`);
+    console.log(`  ${c.hex('#8be9fd')('velx kill-port <port>')}    Kill process occupying port`);
+    console.log(`  ${c.hex('#8be9fd')('velx curl <url>')}          Smart cURL with latency breakdown`);
+    console.log(`  ${c.hex('#8be9fd')('velx cron "<expr>"')}       Explain cron schedule in plain English`);
+    console.log(`  ${c.hex('#8be9fd')('velx hash <string>')}       MD5, SHA256, Base64 & UUID suite`);
+    console.log(`  ${c.hex('#8be9fd')('velx utils')}               Access all developer utilities\n`);
     return;
   }
 
@@ -116,6 +116,6 @@ export async function runCli(argv = process.argv.slice(2)) {
       break;
 
     default:
-      console.log(c.red(`Unknown command: "${cmd}". Run "devpulse --help" for available commands.\n`));
+      console.log(c.red(`Unknown command: "${cmd}". Run "velx --help" for available commands.\n`));
   }
 }

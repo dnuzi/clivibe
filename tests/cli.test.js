@@ -6,13 +6,13 @@ import { stripAnsi, createBox } from '../src/ui/box.js';
 import { renderTable } from '../src/ui/table.js';
 import { c } from '../src/ui/colors.js';
 
-test('devpulse --version outputs correct version', () => {
-  const output = execSync('node bin/devpulse.js --version', { encoding: 'utf-8' });
-  assert.match(output, /devpulse v1\.0\.0/);
+test('velx --version outputs correct version', () => {
+  const output = execSync('node bin/velx.js --version', { encoding: 'utf-8' });
+  assert.match(output, /velx v1\.0\.0/);
 });
 
-test('devpulse --help displays all primary commands', () => {
-  const output = execSync('node bin/devpulse.js --help', { encoding: 'utf-8' });
+test('velx --help displays all primary commands', () => {
+  const output = execSync('node bin/velx.js --help', { encoding: 'utf-8' });
   assert.ok(output.includes('wtf'));
   assert.ok(output.includes('logsee'));
   assert.ok(output.includes('doctor'));
@@ -21,14 +21,13 @@ test('devpulse --help displays all primary commands', () => {
   assert.ok(output.includes('utils'));
 });
 
-test('devpulse cron parses 5-field expression accurately', () => {
-  const output = execSync('node bin/devpulse.js cron "*/15 * * * *"', { encoding: 'utf-8' });
+test('velx cron parses 5-field expression accurately', () => {
+  const output = execSync('node bin/velx.js cron "*/15 * * * *"', { encoding: 'utf-8' });
   assert.ok(output.includes('Runs every 15 minutes'));
 });
 
-test('devpulse hash generates valid SHA-256 and UUID', () => {
-  const output = execSync('node bin/devpulse.js hash "hello world"', { encoding: 'utf-8' });
-  // SHA-256 for "hello world"
+test('velx hash generates valid SHA-256 and UUID', () => {
+  const output = execSync('node bin/velx.js hash "hello world"', { encoding: 'utf-8' });
   const expectedHash = crypto.createHash('sha256').update('hello world').digest('hex');
   assert.ok(output.includes(expectedHash));
   assert.ok(output.includes('Random UUID'));
