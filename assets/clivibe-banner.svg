@@ -33,20 +33,34 @@
   <rect x="20" y="170" width="860" height="2" fill="url(#line-grad)" rx="1" opacity="0.6"/>
 
   <!-- CLIVIBE logo text -->
-  <text x="40" y="105" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="72" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clivibe</text>
+  <text x="40" y="98" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="68" font-weight="900" fill="url(#text-grad)" filter="url(#glow)" letter-spacing="-1">clivibe</text>
 
   <!-- Tagline -->
-  <text x="42" y="138" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8b949e">The Zero-Dependency Developer Cockpit &amp; Swiss-Army CLI</text>
+  <text x="42" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#8b949e">Zero-Dependency Terminal Color, Gradient &amp; UI Toolkit for Node.js</text>
 
-  <!-- Right side: Commands preview -->
-  <text x="480" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npx clivibe</text>
-  <text x="480" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe doctor</text>
-  <text x="480" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">npm run build 2>&amp;1 | clivibe wtf</text>
-  <text x="480" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe git standup</text>
-  <text x="480" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#58a6ff">$</text>
-  <text x="498" y="136" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe kill-port 3000</text>
+  <!-- Badges below logo -->
+  <rect x="42" y="145" width="82" height="18" rx="4" fill="#5271FF" opacity="0.18"/>
+  <text x="50" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#5271FF">ZERO-DEP</text>
+
+  <rect x="132" y="145" width="88" height="18" rx="4" fill="#FF61D2" opacity="0.18"/>
+  <text x="140" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#FF61D2">GRADIENTS</text>
+
+  <rect x="228" y="145" width="80" height="18" rx="4" fill="#12D8FA" opacity="0.18"/>
+  <text x="236" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#12D8FA">TERMINAL UI</text>
+
+  <!-- Right side: Terminal UI Commands preview -->
+  <text x="480" y="44" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
+  <text x="498" y="44" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe gradient &quot;SYNTHWAVE&quot;</text>
+
+  <text x="480" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
+  <text x="498" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe spark 5,12,18,24,35,42,58,80</text>
+
+  <text x="480" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
+  <text x="498" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe chart 10,25,18,34,55,42,60</text>
+
+  <text x="480" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
+  <text x="498" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe box &quot;Deployment complete&quot;</text>
+
+  <text x="480" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#5271FF">❯</text>
+  <text x="498" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#f0f6fc">clivibe doctor</text>
 </svg>

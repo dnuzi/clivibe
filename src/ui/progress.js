@@ -1,5 +1,5 @@
 // Zero-Dependency Native Terminal Progress Bar
-// Inspired by cli-progress and progress
+// Pure standard library smooth terminal progress bar
 
 import { c, gradients } from './colors.js';
 

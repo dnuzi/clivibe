@@ -1,5 +1,5 @@
 // Zero-Dependency Native Sparkline & ASCII Line Chart Engine
-// Inspired by asciichart
+// Pure standard library terminal data visualization
 
 import { c, gradients } from './colors.js';
 

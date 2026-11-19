@@ -13,6 +13,10 @@
 [![GitHub Discussions](https://img.shields.io/github/discussions/dnuzi/clivibe?style=flat-square&color=5271FF)](https://github.com/dnuzi/clivibe/discussions)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-5271FF?style=flat-square)](https://github.com/sponsors/dnuzi)
 
+<br/><br/>
+
+<img src="https://raw.githubusercontent.com/dnuzi/clivibe/main/assets/demo.gif" width="760" alt="clivibe in action" />
+
 </div>
 
 ---
@@ -236,3 +240,5 @@ Contributions, issues, and feature requests are welcome.
 ## License
 
 [MIT](LICENSE) © [DanuZz](https://github.com/dnuzi)
+
+
