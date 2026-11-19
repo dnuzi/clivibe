@@ -36,8 +36,11 @@ export function renderTree(data, prefix = '') {
 
 // Renders a horizontal status gauge
 export function renderGauge(value, max = 100, options = {}) {
-  const width = options.width || 24;
-  const ratio = Math.min(1, Math.max(0, value / max));
+  let opts = options;
+  let maxVal = max;
+  if (typeof max === 'object' && max !== null) { opts = max; maxVal = opts.max || 100; }
+  const width = opts.width || 24;
+  const ratio = Math.min(1, Math.max(0, value / maxVal));
   const filled = Math.round(ratio * width);
   const empty = width - filled;
 
@@ -114,3 +117,4 @@ export function keyvalue(obj, options = {}) {
     return `  ${c.dim(paddedKey)} ${sep} ${c.bold(String(v))}`;
   }).join('\n');
 }
+
